@@ -1,3 +1,36 @@
+# Quick Steps
+```
+# make sure to ues Python 3.11, 3.12 and 3.13 will fail in compiling onnxsim
+pip install -r requirements.txt
+optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_model_directory
+python dynamic_to_static.py --input_model exported_model_directory/encoder_model.onnx
+python dynamic_to_static.py --input_model exported_model_directory/decoder_model.onnx
+python run_whisper.py --encoder exported_model_directory/encoder_model_static.onnx --decoder exported_model_directory/decoder_model_static.onnx --model-type whisper-base --config-file config/model_config.json --device cpu --input audio_files/61-52s.wav
+```
+
+# Log
+```
+(ovep_venv) C:\GitHub\whisper-ovep-python>python run_whisper.py --encoder exported_model_directory/encoder_model_static.onnx --decoder exported_model_directory/decoder_model_static.onnx --model-type whisper-base --config-file config/model_config.json --device cpu --input audio_files/61-52s.wav
+Selected Provider Options:
+Decoder:  ['CPUExecutionProvider']
+Encoder:  ['CPUExecutionProvider']
+
+Loading tokenizer and feature extractor from: C:\GitHub\whisper-ovep-python\exported_model_directory
+C:\Python\ovep_venv\Lib\site-packages\torchaudio\_backend\utils.py:213: UserWarning: In 2.9, this function's implementation will be changed to use torchaudio.load_with_torchcodec` under the hood. Some parameters like ``normalize``, ``format``, ``buffer_size``, and ``backend`` will be ignored. We recommend that you port your code to rely directly on TorchCodec's decoder instead: https://docs.pytorch.org/torchcodec/stable/generated/torchcodec.decoders.AudioDecoder.html#torchcodec.decoders.AudioDecoder.
+  warnings.warn(
+
+Performance Metric (Chunk 1):
+ Time to First Token for this chunk: 1.87 seconds
+
+Performance Metric (Chunk 2):
+ Time to First Token for this chunk: 44.99 seconds
+ RTF: 1.51
+
+Transcription: Also, there was a stripling page who turned into a maze with so sweet a lady, sir. And in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these mottles? Take your place and let us see what the crystal can show to you, like his not young master. Though I am an old man. With all rant the opening of the tent to see what might be a miss. But Master Will, who peeped out first, needed no more than one glance. Mistress Fitzsuth to the rear of the Ted cries of "A knotting ham! A knotting ham!" before them fled the stroller and his three sons, "Capless and terrible!" "What is that tumult and rioting?" cried out the squire, authoritatively, and he blew twice on the silver whistle which hung at his belt.
+```
+
+# Original README.md
+---
 <table class="sphinxhide" width="100%">
  <tr width="100%">
     <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1> Ryzen™ AI Automatic Speech Recognition </h1>

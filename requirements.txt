@@ -7,3 +7,5 @@ optimum
 accelerate
 jiwer
 soundfile
+onnx
+onnxruntime

@@ -6,6 +6,7 @@ import json
 import os
 import argparse
 import shutil
+import sys
 
 from onnx import shape_inference
 
@@ -73,11 +74,13 @@ if __name__ == "__main__":
     input_model_path = args.input_model
     base_filename = os.path.basename(input_model_path)
     tmp_output_path = os.path.join(tmp_dir, base_filename)
-    final_output_path = os.path.join(exported_model_directory, base_filename)
+    # add "_static" to final output filename
+    filename, ext = os.path.splitext(base_filename)
+    final_output_path = os.path.join(exported_model_directory, f"{filename}_static{ext}")
 
     # Fix dynamic shapes
     print("WARNING: You might have to comment out ONNX checker in //onnxruntime/tools/onnx_model_utils.py if model > 2GB")
-    command_base = ["python", "-m", "onnxruntime.tools.make_dynamic_shape_fixed"]
+    command_base = [sys.executable, "-m", "onnxruntime.tools.make_dynamic_shape_fixed"]
     for param, value in args.params_to_fix.items():
         command = command_base + [input_model_path, tmp_output_path, "--dim_param", str(param), "--dim_value", str(value)]
         subprocess.run(command)
