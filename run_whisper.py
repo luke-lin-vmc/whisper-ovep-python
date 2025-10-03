@@ -19,7 +19,9 @@ class WhisperONNX:
     def __init__(self, encoder_path, decoder_path,
                  tokenizer_dir=None, encoder_providers=None, decoder_providers=None):
 
-        self.encoder = ort.InferenceSession(encoder_path, providers=encoder_providers)
+        #self.encoder = ort.InferenceSession(encoder_path, providers=encoder_providers)
+        #self.decoder = ort.InferenceSession(decoder_path, providers=decoder_providers)
+        self.encoder = ort.InferenceSession(encoder_path, providers=["OpenVINOExecutionProvider"], provider_options=[{"device_type": "CPU"}])
         self.decoder = ort.InferenceSession(decoder_path, providers=decoder_providers)
 
         if tokenizer_dir is None:

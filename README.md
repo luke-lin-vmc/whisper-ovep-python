@@ -2,10 +2,9 @@
 ```
 # make sure to ues Python 3.11, 3.12 and 3.13 will fail in compiling onnxsim
 pip install -r requirements.txt
-optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_model_directory
-python dynamic_to_static.py --input_model exported_model_directory/encoder_model.onnx
-python dynamic_to_static.py --input_model exported_model_directory/decoder_model.onnx
-python run_whisper.py --encoder exported_model_directory/encoder_model_static.onnx --decoder exported_model_directory/decoder_model_static.onnx --model-type whisper-base --config-file config/model_config.json --device cpu --input audio_files/61-52s.wav
+optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_whisper_base
+python dynamic_to_static.py --input_model_dir exported_whisper_base
+python run_whisper.py --encoder exported_whisper_base/encoder_model_static.onnx --decoder exported_whisper_base/decoder_model_static.onnx --model-type whisper-base --config-file config/model_config.json --device cpu --input audio_files/61-52s.wav
 ```
 
 # Log
