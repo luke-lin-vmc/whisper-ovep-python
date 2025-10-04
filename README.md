@@ -1,9 +1,17 @@
 # Quick Steps
+## Export Model
 ```
 # make sure to ues Python 3.11, 3.12 and 3.13 will fail in compiling onnxsim
 pip install -r requirements.txt
 optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_whisper_base
 python dynamic_to_static.py --input_model_dir exported_whisper_base
+```
+## Run
+```
+curl -o ov_2025_1.zip https://storage.openvinotoolkit.org/repositories/openvino/packages/2025.1/windows/openvino_toolkit_windows_2025.1.0.18503.6fec06580ab_x86_64.zip
+tar -zxf ov_2025_1.zip
+.\openvino_toolkit_windows_2025.1.0.18503.6fec06580ab_x86_64\setupvars.bat
+pip install onnxruntime-openvino
 python run_whisper.py --encoder exported_whisper_base/encoder_model_static.onnx --decoder exported_whisper_base/decoder_model_static.onnx --model-type whisper-base --config-file config/model_config.json --device cpu --input audio_files/61-52s.wav
 ```
 
@@ -27,6 +35,8 @@ Performance Metric (Chunk 2):
 
 Transcription: Also, there was a stripling page who turned into a maze with so sweet a lady, sir. And in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these mottles? Take your place and let us see what the crystal can show to you, like his not young master. Though I am an old man. With all rant the opening of the tent to see what might be a miss. But Master Will, who peeped out first, needed no more than one glance. Mistress Fitzsuth to the rear of the Ted cries of "A knotting ham! A knotting ham!" before them fled the stroller and his three sons, "Capless and terrible!" "What is that tumult and rioting?" cried out the squire, authoritatively, and he blew twice on the silver whistle which hung at his belt.
 ```
+# Reference
+https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html
 
 # Original README.md
 ---
