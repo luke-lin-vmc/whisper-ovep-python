@@ -121,12 +121,12 @@ if __name__ == "__main__":
     encoder_model = os.path.join(input_model_dir, encoder_filename)
     decoder_model = os.path.join(input_model_dir, decoder_filename)
  
-    print("[Converting encoder...]")
+    print("[Converting Encoder...Begin]")
     dynamic_to_static(encoder_model)
-    print("[Converting encoder...done]")
+    print("[Converting Encoder...End]")
 
-    print("[Converting decoder...]")
+    print("[Converting Decoder...Begin]")
     dynamic_to_static(decoder_model)
-    print("[Converting decoder...done]")
+    print("[Converting Decoder...End]")
 
     print("Model conversion successful.")
