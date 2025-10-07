@@ -1,3 +1,7 @@
+# About this project
+This project is folked from https://github.com/amd/RyzenAI-SW.
+The purpose is to show how to run Whisper on Intel CPU/GPU/NPU thru [OpenVINO Execution Provider](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
+
 # Quick Steps
 
 ## Export Model
