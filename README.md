@@ -19,7 +19,7 @@ python run_whisper.py --model-dir exported_whisper_base --device cpu --input aud
 
 # Log
 ```
-(ovep_venv) C:\GitHub\whisper-ovep-python>python run_whisper.py --encoder exported_model_directory/encoder_model_static.onnx --decoder exported_model_directory/decoder_model_static.onnx --model-type whisper-base --config-file config/model_config.json --device cpu --input audio_files/61-52s.wav
+C:\GitHub\whisper-ovep-python>python run_whisper.py --encoder exported_model_directory/encoder_model_static.onnx --decoder exported_model_directory/decoder_model_static.onnx --model-type whisper-base --config-file config/model_config.json --device cpu --input audio_files/61-52s.wav
 Selected Provider Options:
 Decoder:  ['CPUExecutionProvider']
 Encoder:  ['CPUExecutionProvider']
