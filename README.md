@@ -17,7 +17,7 @@ pip install onnxruntime-openvino
 python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
 ```
 
-# Log
+## Log
 ```
 C:\Github\whisper-ovep-python>optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_whisper_base
 C:\Users\luke\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\onnx\_internal\registration.py:162: OnnxExporterWarning: Symbolic function 'aten::scaled_dot_product_attention' already registered for opset 14. Replacing the existing function with new function. This is unexpected. Please report it on https://github.com/pytorch/pytorch/issues.
