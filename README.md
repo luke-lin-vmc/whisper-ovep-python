@@ -1,9 +1,19 @@
 # Quick Steps
+
+## Export Model
 ```
 # make sure to use Python 3.11, 3.12 and 3.13 will fail in compiling onnxsim
 pip install -r requirements.txt
 optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_whisper_base
 python dynamic_to_static.py --input_model_dir exported_whisper_base
+```
+
+## Run
+```
+curl -o ov_2025_1.zip https://storage.openvinotoolkit.org/repositories/openvino/packages/2025.1/windows/openvino_toolkit_windows_2025.1.0.18503.6fec06580ab_x86_64.zip
+tar -zxf ov_2025_1.zip
+pip install onnxruntime-openvino
+.\openvino_toolkit_windows_2025.1.0.18503.6fec06580ab_x86_64\setupvars.bat
 python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
 ```
 
