@@ -13,7 +13,7 @@ from onnx import shape_inference
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Fix dynamic shapes in ONNX file using onnxruntime")
-    parser.add_argument("--input_model", required=True, help="Path to the input ONNX file (encoder.onnx or decoder.onnx)")
+    parser.add_argument("--input_model_dir", required=True, help="Directory that contains the input ONNX files (encoder.onnx and decoder.onnx)")
     args = parser.parse_args()
     with open('config/params.json', 'r') as f:
         args.params_to_fix = json.load(f)
@@ -62,27 +62,25 @@ def validate_onnx_model(model):
         return False
 
 
-if __name__ == "__main__":
-    args = parse_args()
-    exported_model_directory = "exported_model_directory"
+def dynamic_to_static(input_model_path):
     tmp_dir = "tmp"
 
     # Prepare workspace
     directorycreation(tmp_dir)
 
     # Derive filenames
-    input_model_path = args.input_model
     base_filename = os.path.basename(input_model_path)
     tmp_output_path = os.path.join(tmp_dir, base_filename)
     # add "_static" to final output filename
     filename, ext = os.path.splitext(base_filename)
-    final_output_path = os.path.join(exported_model_directory, f"{filename}_static{ext}")
+    final_output_path = os.path.join(os.path.dirname(input_model_path), f"{filename}_static{ext}")
 
     # Fix dynamic shapes
     print("WARNING: You might have to comment out ONNX checker in //onnxruntime/tools/onnx_model_utils.py if model > 2GB")
     command_base = [sys.executable, "-m", "onnxruntime.tools.make_dynamic_shape_fixed"]
     for param, value in args.params_to_fix.items():
         command = command_base + [input_model_path, tmp_output_path, "--dim_param", str(param), "--dim_value", str(value)]
+        print("Running:", " ".join(command))
         subprocess.run(command)
         input_model_path = tmp_output_path  # use modified model as next input
 
@@ -108,9 +106,27 @@ if __name__ == "__main__":
     outputs = ort_session.run(None, input_data)
 
     # Cleanup
-    shutil.rmtree(tmp_dir)
+    #shutil.rmtree(tmp_dir)
     print(f"Deleted temporary directory: {tmp_dir}")
 
-    print("Model export successful.")
 
+
+if __name__ == "__main__":
+    args = parse_args()
+    encoder_filename = "encoder_model.onnx"
+    decoder_filename = "decoder_model.onnx"
     
+    # Derive filenames
+    input_model_dir = args.input_model_dir
+    encoder_model = os.path.join(input_model_dir, encoder_filename)
+    decoder_model = os.path.join(input_model_dir, decoder_filename)
+ 
+    print("[Converting Encoder...Begin]")
+    dynamic_to_static(encoder_model)
+    print("[Converting Encoder...End]")
+
+    print("[Converting Decoder...Begin]")
+    dynamic_to_static(decoder_model)
+    print("[Converting Decoder...End]")
+
+    print("Model conversion successful.")

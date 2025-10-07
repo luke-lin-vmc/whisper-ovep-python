@@ -17,10 +17,10 @@ CHUNK_SIZE = 1600  # 0.1 sec chunks
 
 class WhisperONNX:
     def __init__(self, encoder_path, decoder_path,
-                 tokenizer_dir=None, encoder_providers=None, decoder_providers=None):
+                 tokenizer_dir=None, providers=None, provider_options=None):
 
-        self.encoder = ort.InferenceSession(encoder_path, providers=encoder_providers)
-        self.decoder = ort.InferenceSession(decoder_path, providers=decoder_providers)
+        self.encoder = ort.InferenceSession(encoder_path, providers=providers, provider_options=provider_options)
+        self.decoder = ort.InferenceSession(decoder_path, providers=providers, provider_options=provider_options)
 
         if tokenizer_dir is None:
             tokenizer_dir = Path(encoder_path).parent
@@ -159,39 +159,25 @@ def evaluate(model, dataset_dir, results_dir):
         else:
             print("No valid audio-transcript pairs found.")
 
-def load_provider_options(config, model_name, device):
-    """
-    Load provider options for encoder and decoder from JSON config
-    """
-    model_key = model_name.split("-")[-1]  # e.g., whisper-base -> base
-    if model_key not in config["whisper"]:
-        raise ValueError(f"Model type '{model_key}' not found in config")
+def load_provider_info(device):
+    if device == "cpu":
+        providers = ["CPUExecutionProvider"]
+        provider_options = None
+    elif device == "gpu":
+        providers = ["OpenVINOExecutionProvider"]
+        provider_options = [{"device_type": "GPU"}]
+    elif device == "npu":
+        providers = ["OpenVINOExecutionProvider"]
+        provider_options = [{"device_type": "NPU", "cache_dir": "./cache"}]
+    elif device == "ov_cpu":
+        providers = ["OpenVINOExecutionProvider"]
+        provider_options = [{"device_type": "CPU"}]
+    else:
+        raise ValueError(f"Unsupported device: {device}")
 
-    if device not in config["whisper"][model_key]:
-        raise ValueError(f"Device '{device}' not found in config for model type '{model_key}'")
-
-    model_config = config["whisper"][model_key][device]
-    encoder_opts = model_config["encoder"]
-    decoder_opts = model_config["decoder"]
-
-    def build_provider_opts(opts):
-        if opts.get("config_file"):
-            return [
-                (
-                    "VitisAIExecutionProvider",
-                    {
-                        "config_file": opts["config_file"],
-                        "cache_dir": opts.get("cache_dir", ""),
-                        "cache_key": opts.get("cache_key", "")
-                    }
-                )
-            ]
-        else:
-            return ["CPUExecutionProvider"]
-    print("Selected Provider Options: ")
-    print("Decoder: ", build_provider_opts(decoder_opts))
-    print("Encoder: ", build_provider_opts(encoder_opts))
-    return build_provider_opts(encoder_opts), build_provider_opts(decoder_opts)
+    print("Selected provider:", providers)
+    print("Provider option:", provider_options)
+    return providers, provider_options
 
 
 def mic_stream(model, duration=0, silence_threshold=0.01, silence_duration=5.0):
@@ -256,36 +242,23 @@ def mic_stream(model, duration=0, silence_threshold=0.01, silence_duration=5.0):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", help="WAV file path or 'mic'")
-    parser.add_argument("--encoder", required=True, help="Path to Whisper encoder ONNX model")
-    parser.add_argument("--decoder", required=True, help="Path to Whisper decoder ONNX model")
-    parser.add_argument("--tokenizer-dir", default=None,
-                        help="Path to directory containing tokenizer and feature extractor files. "
-                         "If not set, defaults to directory of encoder/decoder models.")
-    parser.add_argument("--model-type", required=True, default="whisper-base", 
-                        choices=["whisper-base", "whisper-medium", "whisper-small"],
-                        help="Whisper model name")
+    parser.add_argument("--model-dir", required=True, help="Path to Whisper ONNX model")
     parser.add_argument("--eval-dir", help="Dataset directory with wavs/ and transcripts.txt")
     parser.add_argument("--results-dir", default="results", help="Directory to store evaluation results")
-    parser.add_argument("--config-file", default="./config/model_config.json", help="Path to Model provider configs")
-    parser.add_argument("--device", choices=['cpu', 'npu'], default='cpu')
+    parser.add_argument("--device", choices=['cpu', 'gpu', 'npu', 'ov_cpu'], default='cpu')
     parser.add_argument("--duration", type=int, default=0, help="Mic duration in seconds (0 = unlimited)")
     args = parser.parse_args()
 
-    if Path(args.config_file).exists():
-        with open(args.config_file) as f:
-            model_config = json.load(f)
-    else:
-        raise FileNotFoundError(f"Config file {args.config_file} not found")
+    providers, provider_options = load_provider_info(args.device)
 
-    encoder_providers, decoder_providers = load_provider_options(
-        model_config, args.model_type, args.device
-    )
+    encoder_path = Path(args.model_dir) / "encoder_model_static.onnx"
+    decoder_path = Path(args.model_dir) / "decoder_model_static.onnx"
 
-    model = WhisperONNX(args.encoder, 
-                        args.decoder,
-                        tokenizer_dir=args.tokenizer_dir,
-                        encoder_providers=encoder_providers,
-                        decoder_providers=decoder_providers)
+    model = WhisperONNX(encoder_path, 
+                        decoder_path,
+                        tokenizer_dir=args.model_dir,
+                        providers=providers,
+                        provider_options=provider_options)
     
     if args.eval_dir:
         evaluate(model, args.eval_dir, args.results_dir)
