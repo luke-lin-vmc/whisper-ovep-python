@@ -1,109 +1,78 @@
 # About this project
-This project is folked from https://github.com/amd/RyzenAI-SW.
-The purpose is to show how to run Whisper on Intel CPU/GPU/NPU thru [OpenVINO Execution Provider](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
+The project is to show how to run Whisper on Intel CPU/GPU/NPU thru [OpenVINO Execution Provider](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
+
+The source code is based on [RyzenAI-SW Whisper Demo](https://github.com/amd/RyzenAI-SW/tree/419829fc8f8f58ad1a31c4fcc0287d2103f84824/demo/ASR/Whisper)
 
 # Quick Steps
 
-## Export Model
+## Prepare model
+### Install required packages
 ```
-# make sure to use Python 3.11, 3.12 and 3.13 will fail in compiling onnxsim
+# make sure to use Python 3.11 as 3.12 and 3.13 fail in compiling onnxsim
+python --version
 pip install -r requirements.txt
+```
+### Export model
+```
 optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_whisper_base
+```
+### Convert model (from dynamic to static)
+```
 python dynamic_to_static.py --input_model_dir exported_whisper_base
 ```
 
 ## Run
+### Download and setup OpenVINO
 ```
 curl -o ov_2025_1.zip https://storage.openvinotoolkit.org/repositories/openvino/packages/2025.1/windows/openvino_toolkit_windows_2025.1.0.18503.6fec06580ab_x86_64.zip
 tar -zxf ov_2025_1.zip
-pip install onnxruntime-openvino
 .\openvino_toolkit_windows_2025.1.0.18503.6fec06580ab_x86_64\setupvars.bat
+```
+### Install OpenVINO execution provider
+```
+pip install onnxruntime-openvino
+```
+### Run the pipeline (input from a file)
+```
 python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
+```
+The device can be ```cpu```, ```gpu```, ```npu``` or ```ov_cpu```
+
+### Run the pipeline (input from microphone)
+```
+python run_whisper.py --model-dir exported_whisper_base --device cpu --input mic
+```
+### Evaluate the pipeline
+```
+python run_whisper.py --model-dir exported_whisper_base --device cpu --eval-dir eval_dataset\LibriSpeech-samples
 ```
 
 ## Log
 ```
-C:\Github\whisper-ovep-python>optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_whisper_base
-C:\Users\luke\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\onnx\_internal\registration.py:162: OnnxExporterWarning: Symbolic function 'aten::scaled_dot_product_attention' already registered for opset 14. Replacing the existing function with new function. This is unexpected. Please report it on https://github.com/pytorch/pytorch/issues.
-  warnings.warn(
-Moving the following attributes in the config to the generation config: {'max_length': 448, 'suppress_tokens': [1, 2, 7, 8, 9, 10, 14, 25, 26, 27, 28, 29, 31, 58, 59, 60, 61, 62, 63, 90, 91, 92, 93, 357, 366, 438, 532, 685, 705, 796, 930, 1058, 1220, 1267, 1279, 1303, 1343, 1377, 1391, 1635, 1782, 1875, 2162, 2361, 2488, 3467, 4008, 4211, 4600, 4808, 5299, 5855, 6329, 7203, 9609, 9959, 10563, 10786, 11420, 11709, 11907, 13163, 13697, 13700, 14808, 15306, 16410, 16791, 17992, 19203, 19510, 20724, 22305, 22935, 27007, 30109, 30420, 33409, 34949, 40283, 40493, 40549, 47282, 49146, 50257, 50357, 50358, 50359, 50360, 50361]}. You are seeing this warning because you've set generation parameters in the model config, as opposed to in the generation config.
-C:\Users\luke\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:881: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
-  if input_features.shape[-1] != expected_seq_length:
-C:\Users\luke\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:551: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
-  if attn_output.size() != (bsz, self.num_heads, tgt_len, self.head_dim):
-Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.43.0. You should pass an instance of `EncoderDecoderCache` instead, e.g. `past_key_values=EncoderDecoderCache.from_legacy_cache(past_key_values)`.
-C:\Users\luke\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:1341: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
-  if sequence_length != 1:
-C:\Users\luke\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\cache_utils.py:556: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
-  or not self.key_cache[layer_idx].numel()  # the layer has no cache
-C:\Users\luke\AppData\Local\Programs\Python\Python311\Lib\site-packages\transformers\cache_utils.py:539: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
-  elif (
-Found different candidate ONNX initializers (likely duplicate) for the tied weights:
-        model.decoder.embed_tokens.weight: {'model.decoder.embed_tokens.weight'}
-        proj_out.weight: {'onnx::MatMul_1642'}
-Found different candidate ONNX initializers (likely duplicate) for the tied weights:
-        model.decoder.embed_tokens.weight: {'model.decoder.embed_tokens.weight'}
-        proj_out.weight: {'onnx::MatMul_1471'}
-
-C:\Github\whisper-ovep-python>
-C:\Github\whisper-ovep-python>
-C:\Github\whisper-ovep-python>python dynamic_to_static.py --input_model_dir exported_whisper_base
-[Converting Encoder...Begin]
-Directory 'tmp' already exists. It has been deleted.
-WARNING: You might have to comment out ONNX checker in //onnxruntime/tools/onnx_model_utils.py if model > 2GB
-Running: C:\Users\luke\AppData\Local\Programs\Python\Python311\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed exported_whisper_base\encoder_model.onnx tmp\encoder_model.onnx --dim_param batch_size --dim_value 1
-Running: C:\Users\luke\AppData\Local\Programs\Python\Python311\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\encoder_model.onnx tmp\encoder_model.onnx --dim_param encoder_sequence_length / 2 --dim_value 1500
-Running: C:\Users\luke\AppData\Local\Programs\Python\Python311\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\encoder_model.onnx tmp\encoder_model.onnx --dim_param decoder_sequence_length --dim_value 180
-Static conversion complete.
-Inferencing shapes for: tmp\encoder_model.onnx
-ONNX model is valid.
-Shape inference complete. Overwritten: exported_whisper_base\encoder_model_static.onnx
----------- Running forward pass ----------------------
-Generating dummy data for: input_features
-Deleted temporary directory: tmp
-[Converting Encoder...End]
-[Converting Decoder...Begin]
-Directory 'tmp' already exists. It has been deleted.
-WARNING: You might have to comment out ONNX checker in //onnxruntime/tools/onnx_model_utils.py if model > 2GB
-Running: C:\Users\luke\AppData\Local\Programs\Python\Python311\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed exported_whisper_base\decoder_model.onnx tmp\decoder_model.onnx --dim_param batch_size --dim_value 1
-Running: C:\Users\luke\AppData\Local\Programs\Python\Python311\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\decoder_model.onnx tmp\decoder_model.onnx --dim_param encoder_sequence_length / 2 --dim_value 1500
-Running: C:\Users\luke\AppData\Local\Programs\Python\Python311\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\decoder_model.onnx tmp\decoder_model.onnx --dim_param decoder_sequence_length --dim_value 180
-Static conversion complete.
-Inferencing shapes for: tmp\decoder_model.onnx
-ONNX model is valid.
-Shape inference complete. Overwritten: exported_whisper_base\decoder_model_static.onnx
----------- Running forward pass ----------------------
-Generating dummy data for: input_ids
-Generating dummy data for: encoder_hidden_states
-Deleted temporary directory: tmp
-[Converting Decoder...End]
-Model conversion successful.
-
-
-C:\Github\whisper-ovep-python>
-C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
-Selected provider: ['CPUExecutionProvider']
-Provider option: None
-C:\Users\luke\AppData\Local\Programs\Python\Python311\Lib\site-packages\torchaudio\_backend\utils.py:213: UserWarning: In 2.9, this function's implementation will be changed to use torchaudio.load_with_torchcodec` under the hood. Some parameters like ``normalize``, ``format``, ``buffer_size``, and ``backend`` will be ignored. We recommend that you port your code to rely directly on TorchCodec's decoder instead: https://docs.pytorch.org/torchcodec/stable/generated/torchcodec.decoders.AudioDecoder.html#torchcodec.decoders.AudioDecoder.
+C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
+Selected provider: ['OpenVINOExecutionProvider']
+Provider option: [{'device_type': 'NPU', 'cache_dir': './cache'}]
+C:\Users\Taroko\AppData\Local\Programs\Python\Python311\Lib\site-packages\torchaudio\_backend\utils.py:213: UserWarning: In 2.9, this function's implementation will be changed to use torchaudio.load_with_torchcodec` under the hood. Some parameters like ``normalize``, ``format``, ``buffer_size``, and ``backend`` will be ignored. We recommend that you port your code to rely directly on TorchCodec's decoder instead: https://docs.pytorch.org/torchcodec/stable/generated/torchcodec.decoders.AudioDecoder.html#torchcodec.decoders.AudioDecoder.
   warnings.warn(
 
 Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.56 seconds
+ Time to First Token for this chunk: 0.21 seconds
 
 Performance Metric (Chunk 2):
- Time to First Token for this chunk: 14.46 seconds
- RTF: 0.52
+ Time to First Token for this chunk: 2.81 seconds
+ RTF: 0.10
 
-Transcription: Also, there was a stripling page who turned into a maze with so sweet a lady, sir. And in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these mottles? Take your place and let us see what the crystal can show to you, like his not young master. Though I am an old man. With all rant the opening of the tent to see what might be a miss. But Master Will, who peeped out first, needed no more than one glance. Mistress Fitzsuth to the rear of the Ted cries of "A knotting ham! A knotting ham!" before them fled the stroller and his three sons, "Capless and terrible!" "What is that tumult and rioting?" cried out the squire, authoritatively, and he blew twice on the silver whistle which hung at his belt.
+Transcription: Also, there was a stripling page who turned into a maze with so sweet a lady, sir. And in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these mottles? Take your place and let us see what the crystal can show to you, like his not young master. Though I am an old man. With all rant the opening of the tent to see what might be a miss. But Master Will, who peeped out first, needed no more than one glance. Mistress Fitzsooth to the rear of the Ted cries of "A knotting ham! A knotting ham!" before them fled the stroller and his three sons, "Capless and terrible!" "What is that tumult and rioting?" cried out the squire, authoritatively, and he blew twice on the silver whistle which hung at his belt.
 
 C:\Github\whisper-ovep-python>
 ```
+[Full log](https://github.com/luke-lin-vmc/whisper-ovep-python/blob/main/log_full.txt) (from model converting to execution) is provided for reference
 
 # Reference
 https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html
 
 
-# Original README.md
+# Original [RyzenAI-SW](https://github.com/amd/RyzenAI-SW) README.md
 ---
 <table class="sphinxhide" width="100%">
  <tr width="100%">
