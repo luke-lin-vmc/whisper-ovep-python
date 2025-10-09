@@ -106,7 +106,7 @@ def dynamic_to_static(input_model_path):
     outputs = ort_session.run(None, input_data)
 
     # Cleanup
-    #shutil.rmtree(tmp_dir)
+    shutil.rmtree(tmp_dir)
     print(f"Deleted temporary directory: {tmp_dir}")
 
 
