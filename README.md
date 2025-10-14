@@ -1,5 +1,5 @@
 # About this project
-The project is to show how to run Whisper on Intel CPU/GPU/NPU thru [OpenVINO Execution Provider](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
+The project is to show how to run Whisper on Intel CPU/GPU/NPU thru [ONNX Runtime](https://github.com/microsoft/onnxruntime) + [OpenVINO Execution Provider](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
 
 The source code is based on [RyzenAI-SW Whisper Demo](https://github.com/amd/RyzenAI-SW/tree/419829fc8f8f58ad1a31c4fcc0287d2103f84824/demo/ASR/Whisper)
 
@@ -8,7 +8,7 @@ The source code is based on [RyzenAI-SW Whisper Demo](https://github.com/amd/Ryz
 ## Prepare model
 ### Install required packages
 ```
-# make sure to use Python 3.11 as 3.12 and 3.13 fail in compiling onnxsim
+# make sure to use Python 3.11, 3.12 and later versions will fail in compiling onnxsim
 python --version
 pip install -r requirements.txt
 ```
@@ -34,20 +34,21 @@ pip install onnxruntime-openvino
 ```
 ### Run the pipeline (input from a file)
 ```
+# The device can be cpu, gpu, npu or ov_cpu
 python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
 ```
-The device can be ```cpu```, ```gpu```, ```npu``` or ```ov_cpu```
+:warning: Don't use ```venv``` to run the pipeline. Somehow ```openvino*.dll``` can not be found under ```venv``` virtual environments
 
 ### Run the pipeline (input from microphone)
 ```
 python run_whisper.py --model-dir exported_whisper_base --device cpu --input mic
 ```
-### Evaluate the pipeline
+### Run the pipeline to evaluate a dataset
 ```
 python run_whisper.py --model-dir exported_whisper_base --device cpu --eval-dir eval_dataset\LibriSpeech-samples
 ```
 
-## Log
+## Log (NPU)
 ```
 C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
 Selected provider: ['OpenVINOExecutionProvider']
@@ -66,7 +67,7 @@ Transcription: Also, there was a stripling page who turned into a maze with so s
 
 C:\Github\whisper-ovep-python>
 ```
-[Full log](https://github.com/luke-lin-vmc/whisper-ovep-python/blob/main/log_full.txt) (from model converting to execution) is provided for reference
+[Full log](https://github.com/luke-lin-vmc/whisper-ovep-python/blob/main/log_full.txt) (from scratch) is provided for reference
 
 # Reference
 https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html
