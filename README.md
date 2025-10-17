@@ -1,55 +1,105 @@
 # About this project
 The project is to show how to run Whisper on Intel CPU/GPU/NPU thru [ONNX Runtime](https://github.com/microsoft/onnxruntime) + [OpenVINO Execution Provider](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
 
-The source code is based on [RyzenAI-SW Whisper Demo](https://github.com/amd/RyzenAI-SW/tree/419829fc8f8f58ad1a31c4fcc0287d2103f84824/demo/ASR/Whisper)
+The source code is based on [RyzenAI-SW Whisper Demo]https://github.com/amd/RyzenAI-SW/tree/main/demo/ASR/Whisper)
 
 # Quick Steps
 
 ## Prepare model
-### Install required packages
-```
-# make sure to use Python 3.11, 3.12 and later versions will fail in compiling onnxsim
-python --version
+
+### Setup a Python Virtual ENV and Install Dependencies
+
+<details>
+  <summary><strong>Click for Ubuntu Setup</strong></summary>
+
+```bash
+# Optional: install PortAudio for microphone support
+sudo apt-get install -y portaudio19-dev
+
+# Setup Python Virtual ENV
+python3 -m venv whisper-ovep-env
+source whisper-ovep-env/bin/activate
+
+# Clone the repo and Install dependencies
+git clone https://github.com/luke-lin-vmc/whisper-ovep-python.git
+cd whisper-ovep-python
 pip install -r requirements.txt
 ```
+</details>
+
+<details>
+  <summary><strong>Click for Windows Setup</strong></summary>
+
+```powershell
+# Optional: install PortAudio for microphone support
+winget install -e --id intxcc.pyaudio --source winget
+
+python -m venv whisper-ovep-env
+.\whisper-ovep-env\Scripts\Activate.ps1
+
+# Clone the repo and Install dependencies
+git clone https://github.com/luke-lin-vmc/whisper-ovep-python.git
+Set-Location whisper-ovep-python
+
+pip install -r requirements.txt
+```
+</details>
+
+#### For C++ Development
+Follow the guide to install OpenVINO Runtime from an archive file: [Linux](https://docs.openvino.ai/2025/get-started/install-openvino/install-openvino-archive-linux.html) | [Windows](https://docs.openvino.ai/2025/get-started/install-openvino/install-openvino-archive-windows.html)
+
+<details>
+<summary>📦 Click to expand OpenVINO 2025.3 installation from an archive file on Ubuntu</summary>
+<br>
+
+```bash
+wget https://raw.githubusercontent.com/ravi9/misc-scripts/main/openvino/ov-archive-install/install-openvino-from-archive.sh
+chmod +x install-openvino-from-archive.sh
+./install-openvino-from-archive.sh
+```
+- Verify OpenVINO is initialized properly
+```bash
+echo $OpenVINO_DIR
+```
+</details>
+
+
+
 ### Export model
 ```
-optimum-cli export onnx --model openai/whisper-base.en --opset 17 exported_whisper_base
+optimum-cli export onnx --model openai/whisper-small --opset 17 exported_whisper_small
 ```
+> [!NOTE]
+> On Windows, if export fails due to NUMPY errors, `pip install --force-reinstall "numpy<2"`
+
 ### Convert model (from dynamic to static)
 ```
-python dynamic_to_static.py --input_model_dir exported_whisper_base
+python dynamic_to_static.py --input_model_dir exported_whisper_small
 ```
 
 ## Run
-### Download and setup OpenVINO
-```
-curl -o ov_2025_1.zip https://storage.openvinotoolkit.org/repositories/openvino/packages/2025.1/windows/openvino_toolkit_windows_2025.1.0.18503.6fec06580ab_x86_64.zip
-tar -zxf ov_2025_1.zip
-.\openvino_toolkit_windows_2025.1.0.18503.6fec06580ab_x86_64\setupvars.bat
-```
-### Install OpenVINO execution provider
-```
-pip install onnxruntime-openvino
-```
+
 ### Run the pipeline (input from a file)
 ```
 # The device can be cpu, gpu, npu or ov_cpu
-python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
+python run_whisper.py --model-dir exported_whisper_small --device cpu --input audio_files/61-52s.wav
 ```
-:warning: Don't use ```venv``` to run the pipeline. Somehow ```openvino*.dll``` can not be found under ```venv``` virtual environments
+> [!NOTE]
+> :warning: On Windows, Don't use ```venv``` to run the pipeline. Somehow ```openvino*.dll``` can not be found under ```venv``` virtual environments
 
 ### Run the pipeline (input from microphone)
 ```
-python run_whisper.py --model-dir exported_whisper_base --device cpu --input mic
+python run_whisper.py --model-dir exported_whisper_small --device cpu --input mic
 ```
 ### Run the pipeline to evaluate a dataset
 ```
-python run_whisper.py --model-dir exported_whisper_base --device cpu --eval-dir eval_dataset\LibriSpeech-samples
+python run_whisper.py --model-dir exported_whisper_small --device cpu --eval-dir eval_dataset\LibriSpeech-samples
 ```
 
-## Log (NPU)
-```
+### Log (NPU)
+[Full log](https://github.com/luke-lin-vmc/whisper-ovep-python/blob/main/log_full.txt) (from scratch) is provided for reference.
+
+```console
 C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
 Selected provider: ['OpenVINOExecutionProvider']
 Provider option: [{'device_type': 'NPU', 'cache_dir': './cache'}]
@@ -67,11 +117,8 @@ Transcription: Also, there was a stripling page who turned into a maze with so s
 
 C:\Github\whisper-ovep-python>
 ```
-[Full log](https://github.com/luke-lin-vmc/whisper-ovep-python/blob/main/log_full.txt) (from scratch) is provided for reference
 
-# Reference
-https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html
-
+---
 
 # Original [RyzenAI-SW](https://github.com/amd/RyzenAI-SW) README.md
 ---

@@ -1,11 +1,11 @@
-torch
-torchaudio
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.3.1+cpu
+torchaudio==2.3.1+cpu
 sounddevice
 transformers==4.52.4
-onnxsim
-optimum
 accelerate
 jiwer
 soundfile
+optimum-intel
 onnx
-onnxruntime
+onnxruntime-openvino
