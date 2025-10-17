@@ -29,7 +29,11 @@ class WhisperONNX:
         self.tokenizer = WhisperTokenizer.from_pretrained(tokenizer_dir)
         self.decoder_start_token = self.sot_token = self.tokenizer.convert_tokens_to_ids("<|startoftranscript|>")
         self.eos_token = self.tokenizer.eos_token_id
-        self.max_length = min(448, self.decoder.get_inputs()[0].shape[1])
+        decoder_dim = self.decoder.get_inputs()[0].shape[1]
+        if isinstance(decoder_dim, int):
+            self.max_length = min(448, decoder_dim)
+        else:
+            self.max_length = 448
         if not isinstance(self.max_length, int):
             raise ValueError("Invalid/Dynamic input shapes")
     def preprocess(self, audio):
@@ -251,8 +255,26 @@ def main():
 
     providers, provider_options = load_provider_info(args.device)
 
-    encoder_path = Path(args.model_dir) / "encoder_model_static.onnx"
-    decoder_path = Path(args.model_dir) / "decoder_model_static.onnx"
+    encoder_candidates = ["encoder_model_static.onnx", "encoder_model.onnx", "encoder.onnx"]
+    decoder_candidates = ["decoder_model_static.onnx", "decoder_model.onnx", "decoder.onnx"]
+
+    for name in encoder_candidates:
+        candidate = Path(args.model_dir) / name
+        if candidate.is_file():
+            encoder_path = candidate
+            print(f"Using encoder model: {encoder_path}")
+            break
+    else:
+        raise FileNotFoundError(f"Encoder model not found in {args.model_dir}")
+
+    for name in decoder_candidates:
+        candidate = Path(args.model_dir) / name
+        if candidate.is_file():
+            decoder_path = candidate
+            print(f"Using decoder model: {decoder_path}")
+            break
+    else:
+        raise FileNotFoundError(f"Decoder model not found in {args.model_dir}")
 
     model = WhisperONNX(encoder_path, 
                         decoder_path,
