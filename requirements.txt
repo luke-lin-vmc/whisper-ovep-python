@@ -1,9 +1,10 @@
 torch
 torchaudio
+torchcodec
 sounddevice
 transformers==4.52.4
 onnxsim
-optimum
+optimum[onnx]
 accelerate
 jiwer
 soundfile
