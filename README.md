@@ -31,7 +31,7 @@ tar -zxf ov_2025_3.zip
 
 1. Download [```ffmpeg-7.1.1-full_build-shared.zip```](https://github.com/GyanD/codexffmpeg/releases/download/7.1.1/ffmpeg-7.1.1-full_build-shared.zip) from [```ffmpeg releases repo```](https://github.com/GyanD/codexffmpeg/releases). Don’t use release 8.x as ```torchcodec``` supports ```FFmpeg``` 4.x~7.x.
 2. Input ```pip show pip``` to find your Python site-packages location.
-3. Decompress the downloaded ```FFmpeg``` packagein step 1., copy ```bin\*.dll``` to Python ```site-packages\torchcodec```. The files under ```site-packages\torchcodec``` should look like
+3. Decompress the downloaded ```FFmpeg``` package in step 1., copy ```bin\*.dll``` to Python ```site-packages\torchcodec```. The files under ```site-packages\torchcodec``` should look like
 
 ```
 C:\Python\openvino_env\Lib\site-packages\torchcodec>dir /o
@@ -97,17 +97,19 @@ python run_whisper.py --model-dir exported_whisper_base --device cpu --input mic
 python run_whisper.py --model-dir exported_whisper_base --device cpu --eval-dir eval_dataset\LibriSpeech-samples
 ```
 * Results will be stored in ```results\LibriSpeech-samples\results.txt```
-## Known issue
+## Known issues
 The following warning may occur when running the pipeline
 ```
-C:\Users\Taroko\AppData\Local\Programs\Python\Python311\Lib\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py:123: UserWarning: Specified provider 'OpenVINOExecutionProvider' is not in available provider names.Available providers: 'AzureExecutionProvider, CPUExecutionProvider'
+C:\Users\...\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py:123:
+User Warning: Specified provider 'OpenVINOExecutionProvider' is not in available provider names.
+Available providers: 'AzureExecutionProvider, CPUExecutionProvider'
 ```
-Solution: simply uninstall then reinstall ```onnxruntime-openvino```
+Solution is to simply reinstall ```onnxruntime-openvino```
 ```
 pip uninstall -y onnxruntime-openvino
 pip install onnxruntime-openvino
 ```
-## Log (NPU)
+## Log (device is NPU)
 ```
 C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
 Selected provider: ['OpenVINOExecutionProvider']
