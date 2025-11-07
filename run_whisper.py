@@ -11,6 +11,10 @@ from transformers import WhisperFeatureExtractor, WhisperTokenizer
 from pathlib import Path
 from jiwer import wer, cer
 
+# Add openvino libs to path as onnxruntime_providers_openvino.dll depends on openvino.dll. See https://github.com/intel/onnxruntime/releases/
+import onnxruntime.tools.add_openvino_win_libs as utils
+utils.add_openvino_libs_to_path()
+
 SAMPLE_RATE = 16000
 CHUNK_SIZE = 1600  # 0.1 sec chunks
 

@@ -20,12 +20,6 @@ optimum-cli export onnx --model openai/whisper-base --opset 18 exported_whisper_
 python dynamic_to_static.py --input_model_dir exported_whisper_base
 ```
 ## Run
-### Install and setup OpenVINO
-```
-curl -o ov_2025_3.zip https://storage.openvinotoolkit.org/repositories/openvino/packages/2025.3/windows/openvino_toolkit_windows_2025.3.0.19807.44526285f24_x86_64.zip
-tar -zxf ov_2025_3.zip
-.\openvino_toolkit_windows_2025.3.0.19807.44526285f24_x86_64\setupvars.bat
-```
 ### Install FFmpeg
 ```FFmpeg``` is required as ```torchcodec``` leverages ```FFmpeg``` as its underlying encoding/decoding engine.
 
@@ -75,19 +69,11 @@ C:\Python\openvino_env\Lib\site-packages\torchcodec>dir /o
               24 File(s)    162,640,122 bytes
                8 Dir(s)  115,870,347,264 bytes free
 ```
-
-### Install OpenVINO execution provider
-```
-pip install onnxruntime-openvino
-```
-
 ### Run the pipeline (input from a file)
 ```
 python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
 ```
 * The device can be ```cpu```, ```gpu```, ```npu``` or ```ov_cpu```
-* :warning: Don't use ```venv``` to run the pipeline. Somehow ```openvino*.dll``` can not be found under ```venv``` virtual environments. If you really need ```venv```, try utils.add_openvino_libs_to_path() mentioned in [OVEP release page](https://github.com/intel/onnxruntime/releases/)
-
 ### Run the pipeline (input from microphone)
 ```
 python run_whisper.py --model-dir exported_whisper_base --device cpu --input mic
@@ -98,7 +84,7 @@ python run_whisper.py --model-dir exported_whisper_base --device cpu --eval-dir 
 ```
 * Results will be stored in ```results\LibriSpeech-samples\results.txt```
 ## Known issues
-The following warning may occur when running the pipeline
+The following warning appears when running the pipeline thru OVEP for the 1st time
 ```
 C:\Users\...\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py:123:
 User Warning: Specified provider 'OpenVINOExecutionProvider' is not in available provider names.

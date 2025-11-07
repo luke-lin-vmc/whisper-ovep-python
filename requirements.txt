@@ -9,4 +9,6 @@ accelerate
 jiwer
 soundfile
 onnx
-onnxruntime
+onnxruntime~=1.23.0
+onnxruntime-openvino~=1.23.0
+openvino~=2025.3.0
