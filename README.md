@@ -15,6 +15,7 @@ pip install -r requirements.txt
 ```
 optimum-cli export onnx --model openai/whisper-base --opset 18 exported_whisper_base
 ```
+* Supported models: ```whisper-base```, ```whisper-small``` and ```whisper-medium```
 ### Convert model (from dynamic to static)
 ```
 python dynamic_to_static.py --input_model_dir exported_whisper_base
