@@ -18,13 +18,13 @@ setuptools 65.5.0
 
 (ovep_venv) C:\Github\whisper-ovep-python>
 (ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>pip install -r requirements.txt
+(ovep_venv) C:\GitHub\whisper-ovep-python>pip install -r requirements.txt
 Collecting torch (from -r requirements.txt (line 1))
-  Using cached torch-2.9.0-cp311-cp311-win_amd64.whl.metadata (30 kB)
+  Downloading torch-2.9.1-cp311-cp311-win_amd64.whl.metadata (30 kB)
 Collecting torchaudio (from -r requirements.txt (line 2))
-  Using cached torchaudio-2.9.0-cp311-cp311-win_amd64.whl.metadata (6.9 kB)
+  Downloading torchaudio-2.9.1-cp311-cp311-win_amd64.whl.metadata (6.9 kB)
 Collecting torchcodec (from -r requirements.txt (line 3))
-  Downloading torchcodec-0.8.1-cp311-cp311-win_amd64.whl.metadata (9.9 kB)
+  Using cached torchcodec-0.8.1-cp311-cp311-win_amd64.whl.metadata (9.9 kB)
 Collecting sounddevice (from -r requirements.txt (line 4))
   Using cached sounddevice-0.5.3-py3-none-win_amd64.whl.metadata (1.6 kB)
 Collecting transformers==4.52.4 (from -r requirements.txt (line 5))
@@ -32,59 +32,57 @@ Collecting transformers==4.52.4 (from -r requirements.txt (line 5))
 Collecting onnxsim (from -r requirements.txt (line 6))
   Using cached onnxsim-0.4.36-cp311-cp311-win_amd64.whl.metadata (4.4 kB)
 Collecting accelerate (from -r requirements.txt (line 8))
-  Downloading accelerate-1.11.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.12.0-py3-none-any.whl.metadata (19 kB)
 Collecting jiwer (from -r requirements.txt (line 9))
   Using cached jiwer-4.0.0-py3-none-any.whl.metadata (3.3 kB)
 Collecting soundfile (from -r requirements.txt (line 10))
   Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata (16 kB)
 Collecting onnx (from -r requirements.txt (line 11))
-  Using cached onnx-1.19.1-cp311-cp311-win_amd64.whl.metadata (7.2 kB)
-Collecting onnxruntime~=1.23.0 (from -r requirements.txt (line 12))
-  Downloading onnxruntime-1.23.2-cp311-cp311-win_amd64.whl.metadata (5.3 kB)
-Collecting onnxruntime-openvino~=1.23.0 (from -r requirements.txt (line 13))
+  Downloading onnx-1.20.0-cp311-cp311-win_amd64.whl.metadata (8.6 kB)
+Collecting onnxruntime-openvino~=1.23.0 (from -r requirements.txt (line 12))
   Using cached onnxruntime_openvino-1.23.0-cp311-cp311-win_amd64.whl.metadata (4.8 kB)
-Collecting openvino~=2025.3.0 (from -r requirements.txt (line 14))
-  Downloading openvino-2025.3.0-19807-cp311-cp311-win_amd64.whl.metadata (13 kB)
+Collecting openvino~=2025.3.0 (from -r requirements.txt (line 13))
+  Using cached openvino-2025.3.0-19807-cp311-cp311-win_amd64.whl.metadata (13 kB)
 Collecting optimum[onnx] (from -r requirements.txt (line 7))
   Using cached optimum-2.0.0-py3-none-any.whl.metadata (14 kB)
 Collecting filelock (from transformers==4.52.4->-r requirements.txt (line 5))
   Using cached filelock-3.20.0-py3-none-any.whl.metadata (2.1 kB)
 Collecting huggingface-hub<1.0,>=0.30.0 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Downloading huggingface_hub-0.36.0-py3-none-any.whl.metadata (14 kB)
+  Using cached huggingface_hub-0.36.0-py3-none-any.whl.metadata (14 kB)
 Collecting numpy>=1.17 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached numpy-2.3.4-cp311-cp311-win_amd64.whl.metadata (60 kB)
+  Using cached numpy-2.3.5-cp311-cp311-win_amd64.whl.metadata (60 kB)
 Collecting packaging>=20.0 (from transformers==4.52.4->-r requirements.txt (line 5))
   Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
 Collecting pyyaml>=5.1 (from transformers==4.52.4->-r requirements.txt (line 5))
   Using cached pyyaml-6.0.3-cp311-cp311-win_amd64.whl.metadata (2.4 kB)
 Collecting regex!=2019.12.17 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Downloading regex-2025.11.3-cp311-cp311-win_amd64.whl.metadata (41 kB)
+  Using cached regex-2025.11.3-cp311-cp311-win_amd64.whl.metadata (41 kB)
 Collecting requests (from transformers==4.52.4->-r requirements.txt (line 5))
   Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
 Collecting tokenizers<0.22,>=0.21 (from transformers==4.52.4->-r requirements.txt (line 5))
   Using cached tokenizers-0.21.4-cp39-abi3-win_amd64.whl.metadata (6.9 kB)
 Collecting safetensors>=0.4.3 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached safetensors-0.6.2-cp38-abi3-win_amd64.whl.metadata (4.1 kB)
+  Downloading safetensors-0.7.0-cp38-abi3-win_amd64.whl.metadata (4.2 kB)
 Collecting tqdm>=4.27 (from transformers==4.52.4->-r requirements.txt (line 5))
   Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
-Collecting coloredlogs (from onnxruntime~=1.23.0->-r requirements.txt (line 12))
+Collecting coloredlogs (from onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
   Using cached coloredlogs-15.0.1-py2.py3-none-any.whl.metadata (12 kB)
-Collecting flatbuffers (from onnxruntime~=1.23.0->-r requirements.txt (line 12))
+Collecting flatbuffers (from onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
   Using cached flatbuffers-25.9.23-py2.py3-none-any.whl.metadata (875 bytes)
-Collecting protobuf (from onnxruntime~=1.23.0->-r requirements.txt (line 12))
-  Using cached protobuf-6.33.0-cp310-abi3-win_amd64.whl.metadata (593 bytes)
-Collecting sympy (from onnxruntime~=1.23.0->-r requirements.txt (line 12))
+Collecting protobuf (from onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
+  Using cached protobuf-6.33.1-cp310-abi3-win_amd64.whl.metadata (593 bytes)
+Collecting sympy (from onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
   Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
 Collecting numpy>=1.17 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Downloading numpy-2.2.6-cp311-cp311-win_amd64.whl.metadata (60 kB)
-Collecting openvino-telemetry>=2023.2.1 (from openvino~=2025.3.0->-r requirements.txt (line 14))
-  Downloading openvino_telemetry-2025.2.0-py3-none-any.whl.metadata (2.3 kB)
+  Using cached numpy-2.2.6-cp311-cp311-win_amd64.whl.metadata (60 kB)
+Collecting openvino-telemetry>=2023.2.1 (from openvino~=2025.3.0->-r requirements.txt (line 13))
+  Using cached openvino_telemetry-2025.2.0-py3-none-any.whl.metadata (2.3 kB)
 Collecting fsspec>=2023.5.0 (from huggingface-hub<1.0,>=0.30.0->transformers==4.52.4->-r requirements.txt (line 5))
-  Downloading fsspec-2025.10.0-py3-none-any.whl.metadata (10 kB)
+  Using cached fsspec-2025.10.0-py3-none-any.whl.metadata (10 kB)
 Collecting typing-extensions>=3.7.4.3 (from huggingface-hub<1.0,>=0.30.0->transformers==4.52.4->-r requirements.txt (line 5))
   Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
 Collecting networkx>=2.5.1 (from torch->-r requirements.txt (line 1))
-  Using cached networkx-3.5-py3-none-any.whl.metadata (6.3 kB)
+  Downloading networkx-3.6-py3-none-any.whl.metadata (6.8 kB)
 Collecting jinja2 (from torch->-r requirements.txt (line 1))
   Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
 Collecting CFFI>=1.0 (from sounddevice->-r requirements.txt (line 4))
@@ -94,22 +92,22 @@ Collecting rich (from onnxsim->-r requirements.txt (line 6))
 Collecting optimum-onnx (from optimum[onnx]->-r requirements.txt (line 7))
   Using cached optimum_onnx-0.0.3-py3-none-any.whl.metadata (4.6 kB)
 Collecting psutil (from accelerate->-r requirements.txt (line 8))
-  Downloading psutil-7.1.3-cp37-abi3-win_amd64.whl.metadata (23 kB)
+  Using cached psutil-7.1.3-cp37-abi3-win_amd64.whl.metadata (23 kB)
 Collecting click>=8.1.8 (from jiwer->-r requirements.txt (line 9))
-  Using cached click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+  Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
 Collecting rapidfuzz>=3.9.7 (from jiwer->-r requirements.txt (line 9))
-  Downloading rapidfuzz-3.14.3-cp311-cp311-win_amd64.whl.metadata (12 kB)
+  Using cached rapidfuzz-3.14.3-cp311-cp311-win_amd64.whl.metadata (12 kB)
 Collecting ml_dtypes>=0.5.0 (from onnx->-r requirements.txt (line 11))
-  Using cached ml_dtypes-0.5.3-cp311-cp311-win_amd64.whl.metadata (9.2 kB)
+  Using cached ml_dtypes-0.5.4-cp311-cp311-win_amd64.whl.metadata (9.2 kB)
 Collecting pycparser (from CFFI>=1.0->sounddevice->-r requirements.txt (line 4))
   Using cached pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
 Collecting colorama (from click>=8.1.8->jiwer->-r requirements.txt (line 9))
   Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
-Collecting mpmath<1.4,>=1.1.0 (from sympy->onnxruntime~=1.23.0->-r requirements.txt (line 12))
+Collecting mpmath<1.4,>=1.1.0 (from sympy->onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
   Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
-Collecting humanfriendly>=9.1 (from coloredlogs->onnxruntime~=1.23.0->-r requirements.txt (line 12))
+Collecting humanfriendly>=9.1 (from coloredlogs->onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
   Using cached humanfriendly-10.0-py2.py3-none-any.whl.metadata (9.2 kB)
-Collecting pyreadline3 (from humanfriendly>=9.1->coloredlogs->onnxruntime~=1.23.0->-r requirements.txt (line 12))
+Collecting pyreadline3 (from humanfriendly>=9.1->coloredlogs->onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
   Using cached pyreadline3-3.5.4-py3-none-any.whl.metadata (4.7 kB)
 Collecting MarkupSafe>=2.0 (from jinja2->torch->-r requirements.txt (line 1))
   Using cached markupsafe-3.0.3-cp311-cp311-win_amd64.whl.metadata (2.8 kB)
@@ -120,7 +118,7 @@ Collecting idna<4,>=2.5 (from requests->transformers==4.52.4->-r requirements.tx
 Collecting urllib3<3,>=1.21.1 (from requests->transformers==4.52.4->-r requirements.txt (line 5))
   Using cached urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
 Collecting certifi>=2017.4.17 (from requests->transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+  Using cached certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
 Collecting markdown-it-py>=2.2.0 (from rich->onnxsim->-r requirements.txt (line 6))
   Using cached markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
 Collecting pygments<3.0.0,>=2.13.0 (from rich->onnxsim->-r requirements.txt (line 6))
@@ -128,40 +126,37 @@ Collecting pygments<3.0.0,>=2.13.0 (from rich->onnxsim->-r requirements.txt (lin
 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->onnxsim->-r requirements.txt (line 6))
   Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
 Using cached transformers-4.52.4-py3-none-any.whl (10.5 MB)
-Downloading onnxruntime-1.23.2-cp311-cp311-win_amd64.whl (13.5 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.5/13.5 MB 17.2 MB/s  0:00:00
 Using cached onnxruntime_openvino-1.23.0-cp311-cp311-win_amd64.whl (13.1 MB)
-Downloading openvino-2025.3.0-19807-cp311-cp311-win_amd64.whl (40.6 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.6/40.6 MB 20.0 MB/s  0:00:02
-Downloading huggingface_hub-0.36.0-py3-none-any.whl (566 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.1/566.1 kB 19.0 MB/s  0:00:00
-Downloading numpy-2.2.6-cp311-cp311-win_amd64.whl (12.9 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.9/12.9 MB 20.7 MB/s  0:00:00
+Using cached openvino-2025.3.0-19807-cp311-cp311-win_amd64.whl (40.6 MB)
+Using cached huggingface_hub-0.36.0-py3-none-any.whl (566 kB)
+Using cached numpy-2.2.6-cp311-cp311-win_amd64.whl (12.9 MB)
 Using cached tokenizers-0.21.4-cp39-abi3-win_amd64.whl (2.5 MB)
-Using cached torch-2.9.0-cp311-cp311-win_amd64.whl (109.3 MB)
-Using cached torchaudio-2.9.0-cp311-cp311-win_amd64.whl (664 kB)
-Downloading torchcodec-0.8.1-cp311-cp311-win_amd64.whl (2.1 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 19.8 MB/s  0:00:00
+Downloading torch-2.9.1-cp311-cp311-win_amd64.whl (111.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.0/111.0 MB 20.7 MB/s  0:00:05
+Downloading torchaudio-2.9.1-cp311-cp311-win_amd64.whl (664 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 664.7/664.7 kB 13.0 MB/s  0:00:00
+Using cached torchcodec-0.8.1-cp311-cp311-win_amd64.whl (2.1 MB)
 Using cached sounddevice-0.5.3-py3-none-win_amd64.whl (364 kB)
 Using cached onnxsim-0.4.36-cp311-cp311-win_amd64.whl (1.3 MB)
 Using cached optimum-2.0.0-py3-none-any.whl (162 kB)
-Downloading accelerate-1.11.0-py3-none-any.whl (375 kB)
+Downloading accelerate-1.12.0-py3-none-any.whl (380 kB)
 Using cached jiwer-4.0.0-py3-none-any.whl (23 kB)
 Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
-Using cached onnx-1.19.1-cp311-cp311-win_amd64.whl (16.5 MB)
+Downloading onnx-1.20.0-cp311-cp311-win_amd64.whl (16.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.5/16.5 MB 19.2 MB/s  0:00:00
 Using cached cffi-2.0.0-cp311-cp311-win_amd64.whl (182 kB)
-Using cached click-8.3.0-py3-none-any.whl (107 kB)
-Downloading fsspec-2025.10.0-py3-none-any.whl (200 kB)
-Using cached ml_dtypes-0.5.3-cp311-cp311-win_amd64.whl (206 kB)
-Using cached networkx-3.5-py3-none-any.whl (2.0 MB)
-Downloading openvino_telemetry-2025.2.0-py3-none-any.whl (25 kB)
+Downloading click-8.3.1-py3-none-any.whl (108 kB)
+Using cached fsspec-2025.10.0-py3-none-any.whl (200 kB)
+Using cached ml_dtypes-0.5.4-cp311-cp311-win_amd64.whl (210 kB)
+Downloading networkx-3.6-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.8 MB/s  0:00:00
+Using cached openvino_telemetry-2025.2.0-py3-none-any.whl (25 kB)
 Using cached packaging-25.0-py3-none-any.whl (66 kB)
-Using cached protobuf-6.33.0-cp310-abi3-win_amd64.whl (436 kB)
+Using cached protobuf-6.33.1-cp310-abi3-win_amd64.whl (436 kB)
 Using cached pyyaml-6.0.3-cp311-cp311-win_amd64.whl (158 kB)
-Downloading rapidfuzz-3.14.3-cp311-cp311-win_amd64.whl (1.5 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 13.6 MB/s  0:00:00
-Downloading regex-2025.11.3-cp311-cp311-win_amd64.whl (277 kB)
-Using cached safetensors-0.6.2-cp38-abi3-win_amd64.whl (320 kB)
+Using cached rapidfuzz-3.14.3-cp311-cp311-win_amd64.whl (1.5 MB)
+Using cached regex-2025.11.3-cp311-cp311-win_amd64.whl (277 kB)
+Downloading safetensors-0.7.0-cp38-abi3-win_amd64.whl (341 kB)
 Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
 Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
 Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
@@ -174,33 +169,32 @@ Using cached flatbuffers-25.9.23-py2.py3-none-any.whl (30 kB)
 Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
 Using cached markupsafe-3.0.3-cp311-cp311-win_amd64.whl (15 kB)
 Using cached optimum_onnx-0.0.3-py3-none-any.whl (192 kB)
-Downloading psutil-7.1.3-cp37-abi3-win_amd64.whl (247 kB)
+Using cached psutil-7.1.3-cp37-abi3-win_amd64.whl (247 kB)
 Using cached pycparser-2.23-py3-none-any.whl (118 kB)
 Using cached pyreadline3-3.5.4-py3-none-any.whl (83 kB)
 Using cached requests-2.32.5-py3-none-any.whl (64 kB)
 Using cached charset_normalizer-3.4.4-cp311-cp311-win_amd64.whl (106 kB)
 Using cached idna-3.11-py3-none-any.whl (71 kB)
 Using cached urllib3-2.5.0-py3-none-any.whl (129 kB)
-Using cached certifi-2025.10.5-py3-none-any.whl (163 kB)
+Using cached certifi-2025.11.12-py3-none-any.whl (159 kB)
 Using cached rich-14.2.0-py3-none-any.whl (243 kB)
 Using cached pygments-2.19.2-py3-none-any.whl (1.2 MB)
 Using cached markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
 Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
-Installing collected packages: openvino-telemetry, mpmath, flatbuffers, urllib3, typing-extensions, torchcodec, sympy, safetensors, regex, rapidfuzz, pyyaml, pyreadline3, pygments, pycparser, psutil, protobuf, packaging, numpy, networkx, mdurl, MarkupSafe, idna, fsspec, filelock, colorama, charset_normalizer, certifi, tqdm, requests, openvino, ml_dtypes, markdown-it-py, jinja2, humanfriendly, click, CFFI, torch, soundfile, sounddevice, rich, onnx, jiwer, huggingface-hub, coloredlogs, torchaudio, tokenizers, onnxsim, onnxruntime-openvino, onnxruntime, accelerate, transformers, optimum, optimum-onnx
-Successfully installed CFFI-2.0.0 MarkupSafe-3.0.3 accelerate-1.11.0 certifi-2025.10.5 charset_normalizer-3.4.4 click-8.3.0 colorama-0.4.6 coloredlogs-15.0.1 filelock-3.20.0 flatbuffers-25.9.23 fsspec-2025.10.0 huggingface-hub-0.36.0 humanfriendly-10.0 idna-3.11 jinja2-3.1.6 jiwer-4.0.0 markdown-it-py-4.0.0 mdurl-0.1.2 ml_dtypes-0.5.3 mpmath-1.3.0 networkx-3.5 numpy-2.2.6 onnx-1.19.1 onnxruntime-1.23.2 onnxruntime-openvino-1.23.0 onnxsim-0.4.36 openvino-2025.3.0 openvino-telemetry-2025.2.0 optimum-2.0.0 optimum-onnx-0.0.3 packaging-25.0 protobuf-6.33.0 psutil-7.1.3 pycparser-2.23 pygments-2.19.2 pyreadline3-3.5.4 pyyaml-6.0.3 rapidfuzz-3.14.3 regex-2025.11.3 requests-2.32.5 rich-14.2.0 safetensors-0.6.2 sounddevice-0.5.3 soundfile-0.13.1 sympy-1.14.0 tokenizers-0.21.4 torch-2.9.0 torchaudio-2.9.0 torchcodec-0.8.1 tqdm-4.67.1 transformers-4.52.4 typing-extensions-4.15.0 urllib3-2.5.0
+Installing collected packages: openvino-telemetry, mpmath, flatbuffers, urllib3, typing-extensions, torchcodec, sympy, safetensors, regex, rapidfuzz, pyyaml, pyreadline3, pygments, pycparser, psutil, protobuf, packaging, numpy, networkx, mdurl, MarkupSafe, idna, fsspec, filelock, colorama, charset_normalizer, certifi, tqdm, requests, openvino, ml_dtypes, markdown-it-py, jinja2, humanfriendly, click, CFFI, torch, soundfile, sounddevice, rich, onnx, jiwer, huggingface-hub, coloredlogs, torchaudio, tokenizers, onnxsim, onnxruntime-openvino, accelerate, transformers, optimum, optimum-onnx
+Successfully installed CFFI-2.0.0 MarkupSafe-3.0.3 accelerate-1.12.0 certifi-2025.11.12 charset_normalizer-3.4.4 click-8.3.1 colorama-0.4.6 coloredlogs-15.0.1 filelock-3.20.0 flatbuffers-25.9.23 fsspec-2025.10.0 huggingface-hub-0.36.0 humanfriendly-10.0 idna-3.11 jinja2-3.1.6 jiwer-4.0.0 markdown-it-py-4.0.0 mdurl-0.1.2 ml_dtypes-0.5.4 mpmath-1.3.0 networkx-3.6 numpy-2.2.6 onnx-1.20.0 onnxruntime-openvino-1.23.0 onnxsim-0.4.36 openvino-2025.3.0 openvino-telemetry-2025.2.0 optimum-2.0.0 optimum-onnx-0.0.3 packaging-25.0 protobuf-6.33.1 psutil-7.1.3 pycparser-2.23 pygments-2.19.2 pyreadline3-3.5.4 pyyaml-6.0.3 rapidfuzz-3.14.3 regex-2025.11.3 requests-2.32.5 rich-14.2.0 safetensors-0.7.0 sounddevice-0.5.3 soundfile-0.13.1 sympy-1.14.0 tokenizers-0.21.4 torch-2.9.1 torchaudio-2.9.1 torchcodec-0.8.1 tqdm-4.67.1 transformers-4.52.4 typing-extensions-4.15.0 urllib3-2.5.0
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>pip list
-Package              Version   Build
--------------------- --------- -----
-accelerate           1.11.0
-certifi              2025.10.5
+(ovep_venv) C:\GitHub\whisper-ovep-python>
+(ovep_venv) C:\GitHub\whisper-ovep-python>
+(ovep_venv) C:\GitHub\whisper-ovep-python>
+(ovep_venv) C:\GitHub\whisper-ovep-python>pip list
+Package              Version    Build
+-------------------- ---------- -----
+accelerate           1.12.0
+certifi              2025.11.12
 cffi                 2.0.0
 charset-normalizer   3.4.4
-click                8.3.0
+click                8.3.1
 colorama             0.4.6
 coloredlogs          15.0.1
 filelock             3.20.0
@@ -214,21 +208,20 @@ jiwer                4.0.0
 markdown-it-py       4.0.0
 MarkupSafe           3.0.3
 mdurl                0.1.2
-ml_dtypes            0.5.3
+ml_dtypes            0.5.4
 mpmath               1.3.0
-networkx             3.5
+networkx             3.6
 numpy                2.2.6
-onnx                 1.19.1
-onnxruntime          1.23.2
+onnx                 1.20.0
 onnxruntime-openvino 1.23.0
 onnxsim              0.4.36
-openvino             2025.3.0  19807
+openvino             2025.3.0   19807
 openvino-telemetry   2025.2.0
 optimum              2.0.0
 optimum-onnx         0.0.3
 packaging            25.0
 pip                  25.3
-protobuf             6.33.0
+protobuf             6.33.1
 psutil               7.1.3
 pycparser            2.23
 Pygments             2.19.2
@@ -238,21 +231,23 @@ RapidFuzz            3.14.3
 regex                2025.11.3
 requests             2.32.5
 rich                 14.2.0
-safetensors          0.6.2
+safetensors          0.7.0
 setuptools           65.5.0
 sounddevice          0.5.3
 soundfile            0.13.1
 sympy                1.14.0
 tokenizers           0.21.4
-torch                2.9.0
-torchaudio           2.9.0
+torch                2.9.1
+torchaudio           2.9.1
 torchcodec           0.8.1
 tqdm                 4.67.1
 transformers         4.52.4
 typing_extensions    4.15.0
 urllib3              2.5.0
 
-(ovep_venv) C:\Github\whisper-ovep-python>
+(ovep_venv) C:\GitHub\whisper-ovep-python>
+(ovep_venv) C:\GitHub\whisper-ovep-python>
+(ovep_venv) C:\GitHub\whisper-ovep-python>
 (ovep_venv) C:\Github\whisper-ovep-python>
 (ovep_venv) C:\Github\whisper-ovep-python>
 (ovep_venv) C:\Github\whisper-ovep-python>

@@ -84,18 +84,6 @@ python run_whisper.py --model-dir exported_whisper_base --device cpu --input mic
 python run_whisper.py --model-dir exported_whisper_base --device cpu --eval-dir eval_dataset\LibriSpeech-samples
 ```
 * Results will be stored in ```results\LibriSpeech-samples\results.txt```
-## Known issues
-The following warning appears when running the pipeline thru OVEP for the 1st time
-```
-C:\Users\...\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py:123:
-User Warning: Specified provider 'OpenVINOExecutionProvider' is not in available provider names.
-Available providers: 'AzureExecutionProvider, CPUExecutionProvider'
-```
-Solution is to simply reinstall ```onnxruntime-openvino```
-```
-pip uninstall -y onnxruntime-openvino
-pip install onnxruntime-openvino
-```
 ## Log (device is NPU)
 ```
 C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
@@ -115,5 +103,22 @@ C:\Github\whisper-ovep-python>
 ```
 [Full log](https://github.com/luke-lin-vmc/whisper-ovep-python/blob/main/log_full.txt) (from scratch) is provided for reference
 
+## Known issues
+If the following warning appears when running the pipeline thru OVEP for the 1st time
+```
+C:\Users\...\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py:123:
+User Warning: Specified provider 'OpenVINOExecutionProvider' is not in available provider names.
+Available providers: 'AzureExecutionProvider, CPUExecutionProvider'
+```
+This would be caused by that both ```onnxruntime``` and ```onnxruntime-openvino``` are installed. Solution is to remove both of them then re-install ```onnxruntime-openvino```
+```
+pip uninstall -y onnxruntime onnxruntime-openvino
+pip install onnxruntime-openvino~=1.23.0
+```
+Or simply to re-install ```onnxruntime-openvino``` if you would like to keep ```onnxruntime```
+```
+pip uninstall -y onnxruntime-openvino
+pip install onnxruntime-openvino~=1.23.0
+```
 # Reference
 https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html
