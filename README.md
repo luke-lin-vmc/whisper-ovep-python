@@ -72,19 +72,22 @@ C:\Python\openvino_env\Lib\site-packages\torchcodec>dir /o
 ```
 ### Run the pipeline (input from a file)
 ```
-python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
+python run_whisper.py --model-dir exported_whisper_base --device gpu --input audio_files/61-52s.wav
 ```
-* The device can be ```cpu```, ```gpu```, ```npu``` or ```ov_cpu```
+* The device can be
+  * ```ov_cpu```, ```gpu``` or ```npu``` --- using CPU, GPU or NPU thru OpenVINOExecutionProvider
+  * ```cpu``` --- using CPU thru default CPUExecutionProvider
+
 ### Run the pipeline (input from microphone)
 ```
-python run_whisper.py --model-dir exported_whisper_base --device cpu --input mic
+python run_whisper.py --model-dir exported_whisper_base --device gpu --input mic
 ```
 ### Run the pipeline to evaluate a dataset
 ```
-python run_whisper.py --model-dir exported_whisper_base --device cpu --eval-dir eval_dataset\LibriSpeech-samples
+python run_whisper.py --model-dir exported_whisper_base --device gpu --eval-dir eval_dataset\LibriSpeech-samples
 ```
 * Results will be stored in ```results\LibriSpeech-samples\results.txt```
-## Log (device is NPU)
+## Sample Log
 ```
 C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
 Selected provider: ['OpenVINOExecutionProvider']
@@ -113,12 +116,12 @@ Available providers: 'AzureExecutionProvider, CPUExecutionProvider'
 This would be caused by that both ```onnxruntime``` and ```onnxruntime-openvino``` are installed. Solution is to remove both of them then re-install ```onnxruntime-openvino```
 ```
 pip uninstall -y onnxruntime onnxruntime-openvino
-pip install onnxruntime-openvino~=1.23.0
+pip install onnxruntime-openvino~=1.24.1
 ```
 Or simply to re-install ```onnxruntime-openvino``` if you would like to keep ```onnxruntime```
 ```
 pip uninstall -y onnxruntime-openvino
-pip install onnxruntime-openvino~=1.23.0
+pip install onnxruntime-openvino~=1.24.1
 ```
 # Reference
 https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html

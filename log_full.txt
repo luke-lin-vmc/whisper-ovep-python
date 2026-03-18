@@ -1,207 +1,223 @@
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>python --version
+(python311_venv) C:\GitHub\whisper-ovep-python>python --version
 Python 3.11.9
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>python -m pip install --upgrade pip
-Requirement already satisfied: pip in c:\python\ovep_venv\lib\site-packages (25.3)
+(python311_venv) C:\GitHub\whisper-ovep-python>python -m pip install --upgrade pip
+Requirement already satisfied: pip in C:\Python\python311_venv\Lib\site-packages (26.0.1)
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>pip list
+(python311_venv) C:\GitHub\whisper-ovep-python>pip list
 Package    Version
 ---------- -------
-pip        25.3
+pip        26.0.1
 setuptools 65.5.0
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\GitHub\whisper-ovep-python>pip install -r requirements.txt
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>pip install -r requirements.txt
 Collecting torch (from -r requirements.txt (line 1))
-  Downloading torch-2.9.1-cp311-cp311-win_amd64.whl.metadata (30 kB)
+  Downloading torch-2.10.0-cp311-cp311-win_amd64.whl.metadata (31 kB)
 Collecting torchaudio (from -r requirements.txt (line 2))
-  Downloading torchaudio-2.9.1-cp311-cp311-win_amd64.whl.metadata (6.9 kB)
+  Downloading torchaudio-2.10.0-cp311-cp311-win_amd64.whl.metadata (6.9 kB)
 Collecting torchcodec (from -r requirements.txt (line 3))
-  Using cached torchcodec-0.8.1-cp311-cp311-win_amd64.whl.metadata (9.9 kB)
+  Downloading torchcodec-0.10.0-cp311-cp311-win_amd64.whl.metadata (11 kB)
 Collecting sounddevice (from -r requirements.txt (line 4))
-  Using cached sounddevice-0.5.3-py3-none-win_amd64.whl.metadata (1.6 kB)
+  Downloading sounddevice-0.5.5-py3-none-win_amd64.whl.metadata (1.4 kB)
 Collecting transformers==4.52.4 (from -r requirements.txt (line 5))
-  Using cached transformers-4.52.4-py3-none-any.whl.metadata (38 kB)
+  Downloading transformers-4.52.4-py3-none-any.whl.metadata (38 kB)
 Collecting onnxsim (from -r requirements.txt (line 6))
-  Using cached onnxsim-0.4.36-cp311-cp311-win_amd64.whl.metadata (4.4 kB)
+  Downloading onnxsim-0.6.2.tar.gz (2.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 5.8 MB/s  0:00:00
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Installing backend dependencies ... done
+  Preparing metadata (pyproject.toml) ... done
+Discarding https://files.pythonhosted.org/packages/10/db/af9133c96186ef212637da4c941c0235c9ba8ed5bc9e5f526856a91be0e1/onnxsim-0.6.2.tar.gz (from https://pypi.org/simple/onnxsim/) (requires-python:>=3.7): Requested onnxsim from https://files.pythonhosted.org/packages/10/db/af9133c96186ef212637da4c941c0235c9ba8ed5bc9e5f526856a91be0e1/onnxsim-0.6.2.tar.gz (from -r requirements.txt (line 6)) has inconsistent version: expected '0.6.2', but metadata has '0.4.36'
+  Downloading onnxsim-0.6.1.tar.gz (2.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 14.3 MB/s  0:00:00
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Installing backend dependencies ... done
+  Preparing metadata (pyproject.toml) ... done
+Discarding https://files.pythonhosted.org/packages/ae/47/0628fac379db5b2d461639e412e62405168f6dc1991b685d22839a6fae45/onnxsim-0.6.1.tar.gz (from https://pypi.org/simple/onnxsim/) (requires-python:>=3.7): Requested onnxsim from https://files.pythonhosted.org/packages/ae/47/0628fac379db5b2d461639e412e62405168f6dc1991b685d22839a6fae45/onnxsim-0.6.1.tar.gz (from -r requirements.txt (line 6)) has inconsistent version: expected '0.6.1', but metadata has '0.4.36'
+  Downloading onnxsim-0.5.0.tar.gz (21.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.0/21.0 MB 18.4 MB/s  0:00:01
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Installing backend dependencies ... done
+  Preparing metadata (pyproject.toml) ... done
+Discarding https://files.pythonhosted.org/packages/26/5b/054c0f307e342fa2c8de26385d830c5a1fa57f44302b5bc121a90ee6fb71/onnxsim-0.5.0.tar.gz (from https://pypi.org/simple/onnxsim/) (requires-python:>=3.7): Requested onnxsim from https://files.pythonhosted.org/packages/26/5b/054c0f307e342fa2c8de26385d830c5a1fa57f44302b5bc121a90ee6fb71/onnxsim-0.5.0.tar.gz (from -r requirements.txt (line 6)) has inconsistent version: expected '0.5.0', but metadata has '0.4.36'
+  Downloading onnxsim-0.4.36-cp311-cp311-win_amd64.whl.metadata (4.4 kB)
 Collecting accelerate (from -r requirements.txt (line 8))
-  Downloading accelerate-1.12.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.13.0-py3-none-any.whl.metadata (19 kB)
 Collecting jiwer (from -r requirements.txt (line 9))
-  Using cached jiwer-4.0.0-py3-none-any.whl.metadata (3.3 kB)
+  Downloading jiwer-4.0.0-py3-none-any.whl.metadata (3.3 kB)
 Collecting soundfile (from -r requirements.txt (line 10))
-  Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata (16 kB)
+  Downloading soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata (16 kB)
 Collecting onnx (from -r requirements.txt (line 11))
-  Downloading onnx-1.20.0-cp311-cp311-win_amd64.whl.metadata (8.6 kB)
-Collecting onnxruntime-openvino~=1.23.0 (from -r requirements.txt (line 12))
-  Using cached onnxruntime_openvino-1.23.0-cp311-cp311-win_amd64.whl.metadata (4.8 kB)
-Collecting openvino~=2025.3.0 (from -r requirements.txt (line 13))
-  Using cached openvino-2025.3.0-19807-cp311-cp311-win_amd64.whl.metadata (13 kB)
+  Downloading onnx-1.20.1-cp311-cp311-win_amd64.whl.metadata (8.6 kB)
+Collecting onnxruntime-openvino~=1.24.1 (from -r requirements.txt (line 12))
+  Downloading onnxruntime_openvino-1.24.1-cp311-cp311-win_amd64.whl.metadata (5.1 kB)
+Collecting openvino~=2025.4.1 (from -r requirements.txt (line 13))
+  Downloading openvino-2025.4.1-20426-cp311-cp311-win_amd64.whl.metadata (12 kB)
 Collecting optimum[onnx] (from -r requirements.txt (line 7))
-  Using cached optimum-2.0.0-py3-none-any.whl.metadata (14 kB)
+  Downloading optimum-2.1.0-py3-none-any.whl.metadata (14 kB)
 Collecting filelock (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached filelock-3.20.0-py3-none-any.whl.metadata (2.1 kB)
+  Downloading filelock-3.25.2-py3-none-any.whl.metadata (2.0 kB)
 Collecting huggingface-hub<1.0,>=0.30.0 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached huggingface_hub-0.36.0-py3-none-any.whl.metadata (14 kB)
+  Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
 Collecting numpy>=1.17 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached numpy-2.3.5-cp311-cp311-win_amd64.whl.metadata (60 kB)
+  Downloading numpy-2.4.3-cp311-cp311-win_amd64.whl.metadata (6.6 kB)
 Collecting packaging>=20.0 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+  Downloading packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
 Collecting pyyaml>=5.1 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached pyyaml-6.0.3-cp311-cp311-win_amd64.whl.metadata (2.4 kB)
+  Downloading pyyaml-6.0.3-cp311-cp311-win_amd64.whl.metadata (2.4 kB)
 Collecting regex!=2019.12.17 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached regex-2025.11.3-cp311-cp311-win_amd64.whl.metadata (41 kB)
+  Downloading regex-2026.2.28-cp311-cp311-win_amd64.whl.metadata (41 kB)
 Collecting requests (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+  Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
 Collecting tokenizers<0.22,>=0.21 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached tokenizers-0.21.4-cp39-abi3-win_amd64.whl.metadata (6.9 kB)
+  Downloading tokenizers-0.21.4-cp39-abi3-win_amd64.whl.metadata (6.9 kB)
 Collecting safetensors>=0.4.3 (from transformers==4.52.4->-r requirements.txt (line 5))
   Downloading safetensors-0.7.0-cp38-abi3-win_amd64.whl.metadata (4.2 kB)
 Collecting tqdm>=4.27 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
-Collecting coloredlogs (from onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
-  Using cached coloredlogs-15.0.1-py2.py3-none-any.whl.metadata (12 kB)
-Collecting flatbuffers (from onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
-  Using cached flatbuffers-25.9.23-py2.py3-none-any.whl.metadata (875 bytes)
-Collecting protobuf (from onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
-  Using cached protobuf-6.33.1-cp310-abi3-win_amd64.whl.metadata (593 bytes)
-Collecting sympy (from onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
-  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+  Downloading tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+Collecting flatbuffers (from onnxruntime-openvino~=1.24.1->-r requirements.txt (line 12))
+  Downloading flatbuffers-25.12.19-py2.py3-none-any.whl.metadata (1.0 kB)
+Collecting protobuf (from onnxruntime-openvino~=1.24.1->-r requirements.txt (line 12))
+  Downloading protobuf-7.34.0-cp310-abi3-win_amd64.whl.metadata (595 bytes)
+Collecting sympy (from onnxruntime-openvino~=1.24.1->-r requirements.txt (line 12))
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
 Collecting numpy>=1.17 (from transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached numpy-2.2.6-cp311-cp311-win_amd64.whl.metadata (60 kB)
-Collecting openvino-telemetry>=2023.2.1 (from openvino~=2025.3.0->-r requirements.txt (line 13))
-  Using cached openvino_telemetry-2025.2.0-py3-none-any.whl.metadata (2.3 kB)
+  Downloading numpy-2.3.5-cp311-cp311-win_amd64.whl.metadata (60 kB)
+Collecting openvino-telemetry>=2023.2.1 (from openvino~=2025.4.1->-r requirements.txt (line 13))
+  Downloading openvino_telemetry-2025.2.0-py3-none-any.whl.metadata (2.3 kB)
 Collecting fsspec>=2023.5.0 (from huggingface-hub<1.0,>=0.30.0->transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached fsspec-2025.10.0-py3-none-any.whl.metadata (10 kB)
+  Downloading fsspec-2026.2.0-py3-none-any.whl.metadata (10 kB)
 Collecting typing-extensions>=3.7.4.3 (from huggingface-hub<1.0,>=0.30.0->transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
 Collecting networkx>=2.5.1 (from torch->-r requirements.txt (line 1))
-  Downloading networkx-3.6-py3-none-any.whl.metadata (6.8 kB)
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
 Collecting jinja2 (from torch->-r requirements.txt (line 1))
-  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
-Collecting CFFI>=1.0 (from sounddevice->-r requirements.txt (line 4))
-  Using cached cffi-2.0.0-cp311-cp311-win_amd64.whl.metadata (2.6 kB)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting cffi (from sounddevice->-r requirements.txt (line 4))
+  Downloading cffi-2.0.0-cp311-cp311-win_amd64.whl.metadata (2.6 kB)
 Collecting rich (from onnxsim->-r requirements.txt (line 6))
-  Using cached rich-14.2.0-py3-none-any.whl.metadata (18 kB)
+  Downloading rich-14.3.3-py3-none-any.whl.metadata (18 kB)
 Collecting optimum-onnx (from optimum[onnx]->-r requirements.txt (line 7))
-  Using cached optimum_onnx-0.0.3-py3-none-any.whl.metadata (4.6 kB)
+  Downloading optimum_onnx-0.1.0-py3-none-any.whl.metadata (4.8 kB)
 Collecting psutil (from accelerate->-r requirements.txt (line 8))
-  Using cached psutil-7.1.3-cp37-abi3-win_amd64.whl.metadata (23 kB)
+  Downloading psutil-7.2.2-cp37-abi3-win_amd64.whl.metadata (22 kB)
 Collecting click>=8.1.8 (from jiwer->-r requirements.txt (line 9))
   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
 Collecting rapidfuzz>=3.9.7 (from jiwer->-r requirements.txt (line 9))
-  Using cached rapidfuzz-3.14.3-cp311-cp311-win_amd64.whl.metadata (12 kB)
+  Downloading rapidfuzz-3.14.3-cp311-cp311-win_amd64.whl.metadata (12 kB)
 Collecting ml_dtypes>=0.5.0 (from onnx->-r requirements.txt (line 11))
-  Using cached ml_dtypes-0.5.4-cp311-cp311-win_amd64.whl.metadata (9.2 kB)
-Collecting pycparser (from CFFI>=1.0->sounddevice->-r requirements.txt (line 4))
-  Using cached pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+  Downloading ml_dtypes-0.5.4-cp311-cp311-win_amd64.whl.metadata (9.2 kB)
+Collecting pycparser (from cffi->sounddevice->-r requirements.txt (line 4))
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
 Collecting colorama (from click>=8.1.8->jiwer->-r requirements.txt (line 9))
-  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
-Collecting mpmath<1.4,>=1.1.0 (from sympy->onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
-  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
-Collecting humanfriendly>=9.1 (from coloredlogs->onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
-  Using cached humanfriendly-10.0-py2.py3-none-any.whl.metadata (9.2 kB)
-Collecting pyreadline3 (from humanfriendly>=9.1->coloredlogs->onnxruntime-openvino~=1.23.0->-r requirements.txt (line 12))
-  Using cached pyreadline3-3.5.4-py3-none-any.whl.metadata (4.7 kB)
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy->onnxruntime-openvino~=1.24.1->-r requirements.txt (line 12))
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
 Collecting MarkupSafe>=2.0 (from jinja2->torch->-r requirements.txt (line 1))
-  Using cached markupsafe-3.0.3-cp311-cp311-win_amd64.whl.metadata (2.8 kB)
+  Downloading markupsafe-3.0.3-cp311-cp311-win_amd64.whl.metadata (2.8 kB)
 Collecting charset_normalizer<4,>=2 (from requests->transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached charset_normalizer-3.4.4-cp311-cp311-win_amd64.whl.metadata (38 kB)
+  Downloading charset_normalizer-3.4.6-cp311-cp311-win_amd64.whl.metadata (41 kB)
 Collecting idna<4,>=2.5 (from requests->transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
 Collecting urllib3<3,>=1.21.1 (from requests->transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+  Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
 Collecting certifi>=2017.4.17 (from requests->transformers==4.52.4->-r requirements.txt (line 5))
-  Using cached certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+  Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
 Collecting markdown-it-py>=2.2.0 (from rich->onnxsim->-r requirements.txt (line 6))
-  Using cached markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+  Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
 Collecting pygments<3.0.0,>=2.13.0 (from rich->onnxsim->-r requirements.txt (line 6))
-  Using cached pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+  Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->onnxsim->-r requirements.txt (line 6))
-  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
-Using cached transformers-4.52.4-py3-none-any.whl (10.5 MB)
-Using cached onnxruntime_openvino-1.23.0-cp311-cp311-win_amd64.whl (13.1 MB)
-Using cached openvino-2025.3.0-19807-cp311-cp311-win_amd64.whl (40.6 MB)
-Using cached huggingface_hub-0.36.0-py3-none-any.whl (566 kB)
-Using cached numpy-2.2.6-cp311-cp311-win_amd64.whl (12.9 MB)
-Using cached tokenizers-0.21.4-cp39-abi3-win_amd64.whl (2.5 MB)
-Downloading torch-2.9.1-cp311-cp311-win_amd64.whl (111.0 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.0/111.0 MB 20.7 MB/s  0:00:05
-Downloading torchaudio-2.9.1-cp311-cp311-win_amd64.whl (664 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 664.7/664.7 kB 13.0 MB/s  0:00:00
-Using cached torchcodec-0.8.1-cp311-cp311-win_amd64.whl (2.1 MB)
-Using cached sounddevice-0.5.3-py3-none-win_amd64.whl (364 kB)
-Using cached onnxsim-0.4.36-cp311-cp311-win_amd64.whl (1.3 MB)
-Using cached optimum-2.0.0-py3-none-any.whl (162 kB)
-Downloading accelerate-1.12.0-py3-none-any.whl (380 kB)
-Using cached jiwer-4.0.0-py3-none-any.whl (23 kB)
-Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
-Downloading onnx-1.20.0-cp311-cp311-win_amd64.whl (16.5 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.5/16.5 MB 19.2 MB/s  0:00:00
-Using cached cffi-2.0.0-cp311-cp311-win_amd64.whl (182 kB)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading transformers-4.52.4-py3-none-any.whl (10.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.5/10.5 MB 21.1 MB/s  0:00:00
+Downloading onnxruntime_openvino-1.24.1-cp311-cp311-win_amd64.whl (13.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.7/13.7 MB 3.4 MB/s  0:00:04
+Downloading openvino-2025.4.1-20426-cp311-cp311-win_amd64.whl (41.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.8/41.8 MB 1.9 MB/s  0:00:21
+Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 19.0 MB/s  0:00:00
+Downloading numpy-2.3.5-cp311-cp311-win_amd64.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 23.4 MB/s  0:00:00
+Downloading tokenizers-0.21.4-cp39-abi3-win_amd64.whl (2.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.5/2.5 MB 20.4 MB/s  0:00:00
+Downloading torch-2.10.0-cp311-cp311-win_amd64.whl (113.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.7/113.7 MB 21.7 MB/s  0:00:05
+Downloading torchaudio-2.10.0-cp311-cp311-win_amd64.whl (474 kB)
+Downloading torchcodec-0.10.0-cp311-cp311-win_amd64.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 20.8 MB/s  0:00:00
+Downloading sounddevice-0.5.5-py3-none-win_amd64.whl (365 kB)
+Downloading onnxsim-0.4.36-cp311-cp311-win_amd64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 16.3 MB/s  0:00:00
+Downloading optimum-2.1.0-py3-none-any.whl (161 kB)
+Downloading accelerate-1.13.0-py3-none-any.whl (383 kB)
+Downloading jiwer-4.0.0-py3-none-any.whl (23 kB)
+Downloading soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 16.1 MB/s  0:00:00
+Downloading onnx-1.20.1-cp311-cp311-win_amd64.whl (16.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.4/16.4 MB 16.9 MB/s  0:00:00
+Downloading cffi-2.0.0-cp311-cp311-win_amd64.whl (182 kB)
 Downloading click-8.3.1-py3-none-any.whl (108 kB)
-Using cached fsspec-2025.10.0-py3-none-any.whl (200 kB)
-Using cached ml_dtypes-0.5.4-cp311-cp311-win_amd64.whl (210 kB)
-Downloading networkx-3.6-py3-none-any.whl (2.1 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.8 MB/s  0:00:00
-Using cached openvino_telemetry-2025.2.0-py3-none-any.whl (25 kB)
-Using cached packaging-25.0-py3-none-any.whl (66 kB)
-Using cached protobuf-6.33.1-cp310-abi3-win_amd64.whl (436 kB)
-Using cached pyyaml-6.0.3-cp311-cp311-win_amd64.whl (158 kB)
-Using cached rapidfuzz-3.14.3-cp311-cp311-win_amd64.whl (1.5 MB)
-Using cached regex-2025.11.3-cp311-cp311-win_amd64.whl (277 kB)
+Downloading fsspec-2026.2.0-py3-none-any.whl (202 kB)
+Downloading ml_dtypes-0.5.4-cp311-cp311-win_amd64.whl (210 kB)
+Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 19.2 MB/s  0:00:00
+Downloading openvino_telemetry-2025.2.0-py3-none-any.whl (25 kB)
+Downloading packaging-26.0-py3-none-any.whl (74 kB)
+Downloading protobuf-7.34.0-cp310-abi3-win_amd64.whl (437 kB)
+Downloading pyyaml-6.0.3-cp311-cp311-win_amd64.whl (158 kB)
+Downloading rapidfuzz-3.14.3-cp311-cp311-win_amd64.whl (1.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 20.4 MB/s  0:00:00
+Downloading regex-2026.2.28-cp311-cp311-win_amd64.whl (277 kB)
 Downloading safetensors-0.7.0-cp38-abi3-win_amd64.whl (341 kB)
-Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
-Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
-Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
-Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
-Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
-Using cached coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
-Using cached humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
-Using cached filelock-3.20.0-py3-none-any.whl (16 kB)
-Using cached flatbuffers-25.9.23-py2.py3-none-any.whl (30 kB)
-Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
-Using cached markupsafe-3.0.3-cp311-cp311-win_amd64.whl (15 kB)
-Using cached optimum_onnx-0.0.3-py3-none-any.whl (192 kB)
-Using cached psutil-7.1.3-cp37-abi3-win_amd64.whl (247 kB)
-Using cached pycparser-2.23-py3-none-any.whl (118 kB)
-Using cached pyreadline3-3.5.4-py3-none-any.whl (83 kB)
-Using cached requests-2.32.5-py3-none-any.whl (64 kB)
-Using cached charset_normalizer-3.4.4-cp311-cp311-win_amd64.whl (106 kB)
-Using cached idna-3.11-py3-none-any.whl (71 kB)
-Using cached urllib3-2.5.0-py3-none-any.whl (129 kB)
-Using cached certifi-2025.11.12-py3-none-any.whl (159 kB)
-Using cached rich-14.2.0-py3-none-any.whl (243 kB)
-Using cached pygments-2.19.2-py3-none-any.whl (1.2 MB)
-Using cached markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
-Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
-Installing collected packages: openvino-telemetry, mpmath, flatbuffers, urllib3, typing-extensions, torchcodec, sympy, safetensors, regex, rapidfuzz, pyyaml, pyreadline3, pygments, pycparser, psutil, protobuf, packaging, numpy, networkx, mdurl, MarkupSafe, idna, fsspec, filelock, colorama, charset_normalizer, certifi, tqdm, requests, openvino, ml_dtypes, markdown-it-py, jinja2, humanfriendly, click, CFFI, torch, soundfile, sounddevice, rich, onnx, jiwer, huggingface-hub, coloredlogs, torchaudio, tokenizers, onnxsim, onnxruntime-openvino, accelerate, transformers, optimum, optimum-onnx
-Successfully installed CFFI-2.0.0 MarkupSafe-3.0.3 accelerate-1.12.0 certifi-2025.11.12 charset_normalizer-3.4.4 click-8.3.1 colorama-0.4.6 coloredlogs-15.0.1 filelock-3.20.0 flatbuffers-25.9.23 fsspec-2025.10.0 huggingface-hub-0.36.0 humanfriendly-10.0 idna-3.11 jinja2-3.1.6 jiwer-4.0.0 markdown-it-py-4.0.0 mdurl-0.1.2 ml_dtypes-0.5.4 mpmath-1.3.0 networkx-3.6 numpy-2.2.6 onnx-1.20.0 onnxruntime-openvino-1.23.0 onnxsim-0.4.36 openvino-2025.3.0 openvino-telemetry-2025.2.0 optimum-2.0.0 optimum-onnx-0.0.3 packaging-25.0 protobuf-6.33.1 psutil-7.1.3 pycparser-2.23 pygments-2.19.2 pyreadline3-3.5.4 pyyaml-6.0.3 rapidfuzz-3.14.3 regex-2025.11.3 requests-2.32.5 rich-14.2.0 safetensors-0.7.0 sounddevice-0.5.3 soundfile-0.13.1 sympy-1.14.0 tokenizers-0.21.4 torch-2.9.1 torchaudio-2.9.1 torchcodec-0.8.1 tqdm-4.67.1 transformers-4.52.4 typing-extensions-4.15.0 urllib3-2.5.0
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 20.3 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 17.1 MB/s  0:00:00
+Downloading tqdm-4.67.3-py3-none-any.whl (78 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Downloading filelock-3.25.2-py3-none-any.whl (26 kB)
+Downloading flatbuffers-25.12.19-py2.py3-none-any.whl (26 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp311-cp311-win_amd64.whl (15 kB)
+Downloading optimum_onnx-0.1.0-py3-none-any.whl (194 kB)
+Downloading psutil-7.2.2-cp37-abi3-win_amd64.whl (137 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.6-cp311-cp311-win_amd64.whl (153 kB)
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+Downloading rich-14.3.3-py3-none-any.whl (310 kB)
+Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 15.3 MB/s  0:00:00
+Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Installing collected packages: openvino-telemetry, mpmath, flatbuffers, urllib3, typing-extensions, torchcodec, sympy, safetensors, regex, rapidfuzz, pyyaml, pygments, pycparser, psutil, protobuf, packaging, numpy, networkx, mdurl, MarkupSafe, idna, fsspec, filelock, colorama, charset_normalizer, certifi, tqdm, requests, openvino, onnxruntime-openvino, ml_dtypes, markdown-it-py, jinja2, click, cffi, torch, soundfile, sounddevice, rich, onnx, jiwer, huggingface-hub, torchaudio, tokenizers, onnxsim, accelerate, transformers, optimum, optimum-onnx
+Successfully installed MarkupSafe-3.0.3 accelerate-1.13.0 certifi-2026.2.25 cffi-2.0.0 charset_normalizer-3.4.6 click-8.3.1 colorama-0.4.6 filelock-3.25.2 flatbuffers-25.12.19 fsspec-2026.2.0 huggingface-hub-0.36.2 idna-3.11 jinja2-3.1.6 jiwer-4.0.0 markdown-it-py-4.0.0 mdurl-0.1.2 ml_dtypes-0.5.4 mpmath-1.3.0 networkx-3.6.1 numpy-2.3.5 onnx-1.20.1 onnxruntime-openvino-1.24.1 onnxsim-0.4.36 openvino-2025.4.1 openvino-telemetry-2025.2.0 optimum-2.1.0 optimum-onnx-0.1.0 packaging-26.0 protobuf-7.34.0 psutil-7.2.2 pycparser-3.0 pygments-2.19.2 pyyaml-6.0.3 rapidfuzz-3.14.3 regex-2026.2.28 requests-2.32.5 rich-14.3.3 safetensors-0.7.0 sounddevice-0.5.5 soundfile-0.13.1 sympy-1.14.0 tokenizers-0.21.4 torch-2.10.0 torchaudio-2.10.0 torchcodec-0.10.0 tqdm-4.67.3 transformers-4.52.4 typing-extensions-4.15.0 urllib3-2.6.3
 
-(ovep_venv) C:\GitHub\whisper-ovep-python>
-(ovep_venv) C:\GitHub\whisper-ovep-python>
-(ovep_venv) C:\GitHub\whisper-ovep-python>
-(ovep_venv) C:\GitHub\whisper-ovep-python>pip list
-Package              Version    Build
--------------------- ---------- -----
-accelerate           1.12.0
-certifi              2025.11.12
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>pip list
+Package              Version   Build
+-------------------- --------- -----
+accelerate           1.13.0
+certifi              2026.2.25
 cffi                 2.0.0
-charset-normalizer   3.4.4
+charset-normalizer   3.4.6
 click                8.3.1
 colorama             0.4.6
-coloredlogs          15.0.1
-filelock             3.20.0
-flatbuffers          25.9.23
-fsspec               2025.10.0
-huggingface-hub      0.36.0
-humanfriendly        10.0
+filelock             3.25.2
+flatbuffers          25.12.19
+fsspec               2026.2.0
+huggingface_hub      0.36.2
 idna                 3.11
 Jinja2               3.1.6
 jiwer                4.0.0
@@ -210,59 +226,71 @@ MarkupSafe           3.0.3
 mdurl                0.1.2
 ml_dtypes            0.5.4
 mpmath               1.3.0
-networkx             3.6
-numpy                2.2.6
-onnx                 1.20.0
-onnxruntime-openvino 1.23.0
+networkx             3.6.1
+numpy                2.3.5
+onnx                 1.20.1
+onnxruntime-openvino 1.24.1
 onnxsim              0.4.36
-openvino             2025.3.0   19807
+openvino             2025.4.1  20426
 openvino-telemetry   2025.2.0
-optimum              2.0.0
-optimum-onnx         0.0.3
-packaging            25.0
-pip                  25.3
-protobuf             6.33.1
-psutil               7.1.3
-pycparser            2.23
+optimum              2.1.0
+optimum-onnx         0.1.0
+packaging            26.0
+pip                  26.0.1
+protobuf             7.34.0
+psutil               7.2.2
+pycparser            3.0
 Pygments             2.19.2
-pyreadline3          3.5.4
 PyYAML               6.0.3
 RapidFuzz            3.14.3
-regex                2025.11.3
+regex                2026.2.28
 requests             2.32.5
-rich                 14.2.0
+rich                 14.3.3
 safetensors          0.7.0
 setuptools           65.5.0
-sounddevice          0.5.3
+sounddevice          0.5.5
 soundfile            0.13.1
 sympy                1.14.0
 tokenizers           0.21.4
-torch                2.9.1
-torchaudio           2.9.1
-torchcodec           0.8.1
-tqdm                 4.67.1
+torch                2.10.0
+torchaudio           2.10.0
+torchcodec           0.10.0
+tqdm                 4.67.3
 transformers         4.52.4
 typing_extensions    4.15.0
-urllib3              2.5.0
+urllib3              2.6.3
 
-(ovep_venv) C:\GitHub\whisper-ovep-python>
-(ovep_venv) C:\GitHub\whisper-ovep-python>
-(ovep_venv) C:\GitHub\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>optimum-cli export onnx --model openai/whisper-base --opset 18 exported_whisper_base
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>optimum-cli export onnx --model openai/whisper-base --opset 18 exported_whisper_base
+config.json: 1.98kB [00:00, ?B/s]
+C:\Python\python311_venv\Lib\site-packages\huggingface_hub\file_download.py:143: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\lukelin1\.cache\huggingface\hub\models--openai--whisper-base. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+model.safetensors: 100%|████████████████████████████████████████████████████████████| 290M/290M [00:13<00:00, 21.0MB/s]
+generation_config.json: 3.81kB [00:00, ?B/s]
+tokenizer_config.json: 283kB [00:00, 16.4MB/s]
+vocab.json: 836kB [00:00, 3.13MB/s]
+tokenizer.json: 2.48MB [00:00, 12.2MB/s]
+merges.txt: 494kB [00:00, 12.6MB/s]
+normalizer.json: 52.7kB [00:00, 5.26MB/s]
+added_tokens.json: 34.6kB [00:00, 35.0MB/s]
+special_tokens_map.json: 2.19kB [00:00, ?B/s]
+preprocessor_config.json: 185kB [00:00, 185MB/s]
 Moving the following attributes in the config to the generation config: {'max_length': 448, 'suppress_tokens': [1, 2, 7, 8, 9, 10, 14, 25, 26, 27, 28, 29, 31, 58, 59, 60, 61, 62, 63, 90, 91, 92, 93, 359, 503, 522, 542, 873, 893, 902, 918, 922, 931, 1350, 1853, 1982, 2460, 2627, 3246, 3253, 3268, 3536, 3846, 3961, 4183, 4667, 6585, 6647, 7273, 9061, 9383, 10428, 10929, 11938, 12033, 12331, 12562, 13793, 14157, 14635, 15265, 15618, 16553, 16604, 18362, 18956, 20075, 21675, 22520, 26130, 26161, 26435, 28279, 29464, 31650, 32302, 32470, 36865, 42863, 47425, 49870, 50254, 50258, 50358, 50359, 50360, 50361, 50362], 'begin_suppress_tokens': [220, 50257]}. You are seeing this warning because you've set generation parameters in the model config, as opposed to in the generation config.
-C:\Python\ovep_venv\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:881: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+C:\Python\python311_venv\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:881: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
   if input_features.shape[-1] != expected_seq_length:
-C:\Python\ovep_venv\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:551: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+C:\Python\python311_venv\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:551: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
   if attn_output.size() != (bsz, self.num_heads, tgt_len, self.head_dim):
 Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.43.0. You should pass an instance of `EncoderDecoderCache` instead, e.g. `past_key_values=EncoderDecoderCache.from_legacy_cache(past_key_values)`.
-C:\Python\ovep_venv\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:1341: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+C:\Python\python311_venv\Lib\site-packages\transformers\models\whisper\modeling_whisper.py:1341: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
   if sequence_length != 1:
-C:\Python\ovep_venv\Lib\site-packages\transformers\cache_utils.py:556: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+C:\Python\python311_venv\Lib\site-packages\transformers\cache_utils.py:556: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
   or not self.key_cache[layer_idx].numel()  # the layer has no cache
-C:\Python\ovep_venv\Lib\site-packages\transformers\cache_utils.py:539: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+C:\Python\python311_venv\Lib\site-packages\transformers\cache_utils.py:539: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
   elif (
 Found different candidate ONNX initializers (likely duplicate) for the tied weights:
         model.decoder.embed_tokens.weight: {'model.decoder.embed_tokens.weight'}
@@ -270,27 +298,27 @@ Found different candidate ONNX initializers (likely duplicate) for the tied weig
 Found different candidate ONNX initializers (likely duplicate) for the tied weights:
         model.decoder.embed_tokens.weight: {'model.decoder.embed_tokens.weight'}
         proj_out.weight: {'onnx::MatMul_1471'}
-                -[x] values not close enough, max diff: 0.0011806488037109375 (atol: 1e-05)
-                -[x] values not close enough, max diff: 2.300739288330078e-05 (atol: 1e-05)
-                -[x] values not close enough, max diff: 3.0517578125e-05 (atol: 1e-05)
-                -[x] values not close enough, max diff: 1.71661376953125e-05 (atol: 1e-05)
+                -[x] values not close enough, max diff: 0.0005359649658203125 (atol: 1e-05)
+                -[x] values not close enough, max diff: 2.47955322265625e-05 (atol: 1e-05)
+                -[x] values not close enough, max diff: 3.24249267578125e-05 (atol: 1e-05)
+                -[x] values not close enough, max diff: 1.33514404296875e-05 (atol: 1e-05)
 Validation for the model exported_whisper_base/encoder_model.onnx raised: exported_whisper_base\encoder_model.onnx
 The ONNX export succeeded with the warning: The maximum absolute difference between the output of the reference model and the ONNX exported model is not within the set tolerance 1e-05:
-- logits: max diff = 2.300739288330078e-05
-- present.2.decoder.key: max diff = 3.0517578125e-05
-- present.3.decoder.key: max diff = 1.71661376953125e-05.
+- logits: max diff = 2.47955322265625e-05
+- present.2.decoder.key: max diff = 3.24249267578125e-05
+- present.3.decoder.key: max diff = 1.33514404296875e-05.
  The exported model was saved at: exported_whisper_base
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>python dynamic_to_static.py --input_model_dir exported_whisper_base
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>python dynamic_to_static.py --input_model_dir exported_whisper_base
 [Converting Encoder...Begin]
 WARNING: You might have to comment out ONNX checker in //onnxruntime/tools/onnx_model_utils.py if model > 2GB
-Running: C:\Python\ovep_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed exported_whisper_base\encoder_model.onnx tmp\encoder_model.onnx --dim_param batch_size --dim_value 1
-Running: C:\Python\ovep_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\encoder_model.onnx tmp\encoder_model.onnx --dim_param encoder_sequence_length --dim_value 1500
-Running: C:\Python\ovep_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\encoder_model.onnx tmp\encoder_model.onnx --dim_param decoder_sequence_length --dim_value 180
+Running: C:\Python\python311_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed exported_whisper_base\encoder_model.onnx tmp\encoder_model.onnx --dim_param batch_size --dim_value 1
+Running: C:\Python\python311_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\encoder_model.onnx tmp\encoder_model.onnx --dim_param encoder_sequence_length --dim_value 1500
+Running: C:\Python\python311_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\encoder_model.onnx tmp\encoder_model.onnx --dim_param decoder_sequence_length --dim_value 180
 Static conversion complete.
 Inferencing shapes for: tmp\encoder_model.onnx
 ONNX model is valid.
@@ -301,9 +329,9 @@ Deleted temporary directory: tmp
 [Converting Encoder...End]
 [Converting Decoder...Begin]
 WARNING: You might have to comment out ONNX checker in //onnxruntime/tools/onnx_model_utils.py if model > 2GB
-Running: C:\Python\ovep_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed exported_whisper_base\decoder_model.onnx tmp\decoder_model.onnx --dim_param batch_size --dim_value 1
-Running: C:\Python\ovep_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\decoder_model.onnx tmp\decoder_model.onnx --dim_param encoder_sequence_length --dim_value 1500
-Running: C:\Python\ovep_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\decoder_model.onnx tmp\decoder_model.onnx --dim_param decoder_sequence_length --dim_value 180
+Running: C:\Python\python311_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed exported_whisper_base\decoder_model.onnx tmp\decoder_model.onnx --dim_param batch_size --dim_value 1
+Running: C:\Python\python311_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\decoder_model.onnx tmp\decoder_model.onnx --dim_param encoder_sequence_length --dim_value 1500
+Running: C:\Python\python311_venv\Scripts\python.exe -m onnxruntime.tools.make_dynamic_shape_fixed tmp\decoder_model.onnx tmp\decoder_model.onnx --dim_param decoder_sequence_length --dim_value 180
 Static conversion complete.
 Inferencing shapes for: tmp\decoder_model.onnx
 ONNX model is valid.
@@ -315,222 +343,166 @@ Deleted temporary directory: tmp
 [Converting Decoder...End]
 Model conversion successful.
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>pip show pip
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>REM Check if ffmpeg has been installed
+
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>pip show pip
 Name: pip
-Version: 25.3
+Version: 26.0.1
 Summary: The PyPA recommended tool for installing Python packages.
 Home-page: https://pip.pypa.io/
 Author:
 Author-email: The pip developers <distutils-sig@python.org>
 License-Expression: MIT
-Location: C:\Python\ovep_venv\Lib\site-packages
+Location: C:\Python\python311_venv\Lib\site-packages
 Requires:
 Required-by:
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>REM Check if ffmpeg has been installed
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>dir C:\Python\python311_venv\Lib\site-packages\torchcodec
+ Volume in drive C has no label.
+ Volume Serial Number is 6E19-CE53
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>dir C:\Python\ovep_venv\Lib\site-packages\torchcodec
- Volume in drive C is OS
- Volume Serial Number is 801C-390E
+ Directory of C:\Python\python311_venv\Lib\site-packages\torchcodec
 
- Directory of C:\Python\ovep_venv\Lib\site-packages\torchcodec
+03/18/2026  03:56 PM    <DIR>          .
+03/18/2026  03:49 PM    <DIR>          ..
+03/12/2025  02:06 PM        89,117,184 avcodec-61.dll
+03/12/2025  02:06 PM         4,514,816 avdevice-61.dll
+03/12/2025  02:06 PM        41,882,624 avfilter-10.dll
+03/12/2025  02:06 PM        18,723,328 avformat-61.dll
+03/12/2025  02:06 PM         2,840,576 avutil-59.dll
+03/18/2026  03:48 PM    <DIR>          decoders
+03/18/2026  03:48 PM    <DIR>          encoders
+03/12/2025  02:06 PM           431,616 ffmpeg.exe
+03/12/2025  02:06 PM        15,461,888 ffplay.exe
+03/12/2025  02:06 PM           221,184 ffprobe.exe
+03/18/2026  03:48 PM           374,272 libtorchcodec_core4.dll
+03/18/2026  03:48 PM           374,784 libtorchcodec_core5.dll
+03/18/2026  03:48 PM           374,784 libtorchcodec_core6.dll
+03/18/2026  03:48 PM           374,784 libtorchcodec_core7.dll
+03/18/2026  03:48 PM           375,296 libtorchcodec_core8.dll
+03/18/2026  03:48 PM           686,080 libtorchcodec_custom_ops4.dll
+03/18/2026  03:48 PM           686,080 libtorchcodec_custom_ops5.dll
+03/18/2026  03:48 PM           686,080 libtorchcodec_custom_ops6.dll
+03/18/2026  03:48 PM           686,080 libtorchcodec_custom_ops7.dll
+03/18/2026  03:48 PM           686,080 libtorchcodec_custom_ops8.dll
+03/18/2026  03:48 PM           207,360 libtorchcodec_pybind_ops4.pyd
+03/18/2026  03:48 PM           207,360 libtorchcodec_pybind_ops5.pyd
+03/18/2026  03:48 PM           207,360 libtorchcodec_pybind_ops6.pyd
+03/18/2026  03:48 PM           207,360 libtorchcodec_pybind_ops7.pyd
+03/18/2026  03:48 PM           207,360 libtorchcodec_pybind_ops8.pyd
+03/12/2025  02:06 PM            87,552 postproc-58.dll
+03/18/2026  03:48 PM    <DIR>          samplers
+03/18/2026  03:48 PM    <DIR>          share
+03/12/2025  02:06 PM           438,784 swresample-5.dll
+03/12/2025  02:06 PM           707,584 swscale-8.dll
+03/18/2026  03:48 PM    <DIR>          transforms
+03/18/2026  03:48 PM                76 version.py
+03/18/2026  03:48 PM    <DIR>          _core
+03/18/2026  03:48 PM             5,342 _frame.py
+03/18/2026  03:48 PM             2,445 _internally_replaced_utils.py
+03/18/2026  03:48 PM    <DIR>          _samplers
+03/18/2026  03:48 PM             1,150 __init__.py
+03/18/2026  03:48 PM    <DIR>          __pycache__
+              30 File(s)    180,777,269 bytes
+              10 Dir(s)  587,626,700,800 bytes free
 
-11/07/2025  04:12 PM    <DIR>          .
-11/07/2025  04:08 PM    <DIR>          ..
-11/07/2025  04:12 PM        89,117,184 avcodec-61.dll
-11/07/2025  04:12 PM         4,514,816 avdevice-61.dll
-11/07/2025  04:12 PM        41,882,624 avfilter-10.dll
-11/07/2025  04:12 PM        18,723,328 avformat-61.dll
-11/07/2025  04:12 PM         2,840,576 avutil-59.dll
-11/07/2025  04:05 PM    <DIR>          decoders
-11/07/2025  04:05 PM    <DIR>          encoders
-11/07/2025  04:05 PM           349,184 libtorchcodec_core4.dll
-11/07/2025  04:05 PM           349,696 libtorchcodec_core5.dll
-11/07/2025  04:05 PM           349,696 libtorchcodec_core6.dll
-11/07/2025  04:05 PM           349,696 libtorchcodec_core7.dll
-11/07/2025  04:05 PM           350,208 libtorchcodec_core8.dll
-11/07/2025  04:05 PM           623,104 libtorchcodec_custom_ops4.dll
-11/07/2025  04:05 PM           623,104 libtorchcodec_custom_ops5.dll
-11/07/2025  04:05 PM           623,104 libtorchcodec_custom_ops6.dll
-11/07/2025  04:05 PM           623,104 libtorchcodec_custom_ops7.dll
-11/07/2025  04:05 PM           623,104 libtorchcodec_custom_ops8.dll
-11/07/2025  04:05 PM           206,336 libtorchcodec_pybind_ops4.pyd
-11/07/2025  04:05 PM           206,336 libtorchcodec_pybind_ops5.pyd
-11/07/2025  04:05 PM           206,336 libtorchcodec_pybind_ops6.pyd
-11/07/2025  04:05 PM           206,336 libtorchcodec_pybind_ops7.pyd
-11/07/2025  04:05 PM           206,336 libtorchcodec_pybind_ops8.pyd
-11/07/2025  04:12 PM            87,552 postproc-58.dll
-11/07/2025  04:05 PM    <DIR>          samplers
-11/07/2025  04:12 PM           438,784 swresample-5.dll
-11/07/2025  04:12 PM           707,584 swscale-8.dll
-11/07/2025  04:05 PM                75 version.py
-11/07/2025  04:05 PM    <DIR>          _core
-11/07/2025  04:05 PM             5,350 _frame.py
-11/07/2025  04:05 PM             2,422 _internally_replaced_utils.py
-11/07/2025  04:05 PM    <DIR>          _samplers
-11/07/2025  04:05 PM               595 __init__.py
-11/07/2025  04:05 PM    <DIR>          __pycache__
-              27 File(s)    164,216,570 bytes
-               8 Dir(s)  770,959,503,360 bytes free
-
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device cpu --input audio_files/61-52s.wav
 Selected provider: ['CPUExecutionProvider']
 Provider option: None
 
 Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.77 seconds
+ Time to First Token for this chunk: 1.04 seconds
 
 Performance Metric (Chunk 2):
- Time to First Token for this chunk: 10.40 seconds
- RTF: 0.36
+ Time to First Token for this chunk: 12.53 seconds
+ RTF: 0.54
 
 Transcription: Also, there was a stripling page who turned into a maze was so sweet a lady, sir, and in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these marvels? Take your place and let us see what the crystal can show to you, like is not young master, though I am an old man. With all ran to the opening of the tent to see what might be a miss, but Master Will, who peeped out first, needed no more than one glance. Mistress Fitzuth to the rear of the tent cries of unnotting him, unnotting him. Before them fled the stroller and his three sons, capless and tear what is that tumult and rioting, cried out the squire, thoratatively, and he blew twice on the silver whistle which hung at his belt.
 
-(ovep_venv) C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device gpu --input audio_files/61-52s.wav
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device ov_cpu --input audio_files/61-52s.wav
 Selected provider: ['OpenVINOExecutionProvider']
-Provider option: [{'device_type': 'GPU'}]
-C:\Python\ovep_venv\Lib\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py:123: UserWarning: Specified provider 'OpenVINOExecutionProvider' is not in available provider names.Available providers: 'AzureExecutionProvider, CPUExecutionProvider'
-  warnings.warn(
+Provider option: [{'device_type': 'CPU'}]
 
 Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.89 seconds
+ Time to First Token for this chunk: 0.44 seconds
 
 Performance Metric (Chunk 2):
- Time to First Token for this chunk: 10.36 seconds
- RTF: 0.35
+ Time to First Token for this chunk: 12.63 seconds
+ RTF: 0.46
 
 Transcription: Also, there was a stripling page who turned into a maze was so sweet a lady, sir, and in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these marvels? Take your place and let us see what the crystal can show to you, like is not young master, though I am an old man. With all ran to the opening of the tent to see what might be a miss, but Master Will, who peeped out first, needed no more than one glance. Mistress Fitzuth to the rear of the tent cries of unnotting him, unnotting him. Before them fled the stroller and his three sons, capless and tear what is that tumult and rioting, cried out the squire, thoratatively, and he blew twice on the silver whistle which hung at his belt.
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>pip uninstall -y onnxruntime-openvino
-Found existing installation: onnxruntime-openvino 1.23.0
-Uninstalling onnxruntime-openvino-1.23.0:
-  Successfully uninstalled onnxruntime-openvino-1.23.0
-
-(ovep_venv) C:\Github\whisper-ovep-python>pip install onnxruntime-openvino
-Collecting onnxruntime-openvino
-  Using cached onnxruntime_openvino-1.23.0-cp311-cp311-win_amd64.whl.metadata (4.8 kB)
-Requirement already satisfied: coloredlogs in c:\python\ovep_venv\lib\site-packages (from onnxruntime-openvino) (15.0.1)
-Requirement already satisfied: flatbuffers in c:\python\ovep_venv\lib\site-packages (from onnxruntime-openvino) (25.9.23)
-Requirement already satisfied: numpy>=1.21.6 in c:\python\ovep_venv\lib\site-packages (from onnxruntime-openvino) (2.2.6)
-Requirement already satisfied: packaging in c:\python\ovep_venv\lib\site-packages (from onnxruntime-openvino) (25.0)
-Requirement already satisfied: protobuf in c:\python\ovep_venv\lib\site-packages (from onnxruntime-openvino) (6.33.0)
-Requirement already satisfied: sympy in c:\python\ovep_venv\lib\site-packages (from onnxruntime-openvino) (1.14.0)
-Requirement already satisfied: humanfriendly>=9.1 in c:\python\ovep_venv\lib\site-packages (from coloredlogs->onnxruntime-openvino) (10.0)
-Requirement already satisfied: pyreadline3 in c:\python\ovep_venv\lib\site-packages (from humanfriendly>=9.1->coloredlogs->onnxruntime-openvino) (3.5.4)
-Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\python\ovep_venv\lib\site-packages (from sympy->onnxruntime-openvino) (1.3.0)
-Using cached onnxruntime_openvino-1.23.0-cp311-cp311-win_amd64.whl (13.1 MB)
-Installing collected packages: onnxruntime-openvino
-Successfully installed onnxruntime-openvino-1.23.0
-
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device gpu --input audio_files/61-52s.wav
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device gpu --input audio_files/61-52s.wav
 Selected provider: ['OpenVINOExecutionProvider']
 Provider option: [{'device_type': 'GPU'}]
 
 Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.05 seconds
+ Time to First Token for this chunk: 0.06 seconds
 
 Performance Metric (Chunk 2):
- Time to First Token for this chunk: 1.84 seconds
+ Time to First Token for this chunk: 2.08 seconds
  RTF: 0.07
 
 Transcription: Also, there was a stripling page who turned into a maze was so sweet a lady, sir, and in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these marvels? Take your place and let us see what the crystal can show to you, like is not young master, though I am an old man. With all ran to the opening of the tent to see what might be a miss, but Master Will, who peeped out first, needed no more than one glance. Mistress Fitzuth to the rear of the tent cries of unnotting him, unnotting him. Before them fled the stroller and his three sons, capless and tear what is that tumult and rioting, cried out the squire, thoratatively, and he blew twice on the silver whistle which hung at his belt.
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
 Selected provider: ['OpenVINOExecutionProvider']
 Provider option: [{'device_type': 'NPU', 'cache_dir': './cache'}]
 
 Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.11 seconds
+ Time to First Token for this chunk: 0.12 seconds
 
 Performance Metric (Chunk 2):
- Time to First Token for this chunk: 2.04 seconds
- RTF: 0.07
+ Time to First Token for this chunk: 2.15 seconds
+ RTF: 0.08
 
 Transcription: Also, there was a stripling page who turned into a maze was so sweet a lady, sir, and in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these marvels? Take your place and let us see what the crystal can show to you, like is not young master, though I am an old man. With all rant the opening of the tent to see what might be a miss, but Master Will, who peeped out first, needed no more than one glance. Mistress Fitzuth to the rear of the tent cries of unnotting him, unnotting him. Before them fled the stroller and his three sons, capless and tear what is that tumult and rioting, cried out the squire, thoratatively, and he blew twice on the silver whistle which hung at his belt.
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input mic
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device gpu --eval-dir eval_dataset\LibriSpeech-samples
 Selected provider: ['OpenVINOExecutionProvider']
-Provider option: [{'device_type': 'NPU', 'cache_dir': './cache'}]
-
-🎤 Real-time Transcription. Start Speaking ..
-
-
-How are you doing?
-
-
-I'm fine, thank you.
-
-
-
-🔕 Silence detected. Stopping transcription.
-
-(ovep_venv) C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --eval-dir eval_dataset\LibriSpeech-samples
-Selected provider: ['OpenVINOExecutionProvider']
-Provider option: [{'device_type': 'NPU', 'cache_dir': './cache'}]
+Provider option: [{'device_type': 'GPU'}]
 
 Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.10 seconds
+ Time to First Token for this chunk: 0.07 seconds
  RTF: 0.06
 
 Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.05 seconds
- RTF: 0.06
-
-Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.03 seconds
+ Time to First Token for this chunk: 0.04 seconds
  RTF: 0.07
+
+Performance Metric (Chunk 1):
+ Time to First Token for this chunk: 0.04 seconds
+ RTF: 0.08
 Evaluation completed for 3 files.
-Average WER: 0.155, Average CER: 0.033, Average RTF: 0.063
+Average WER: 0.155, Average CER: 0.033, Average RTF: 0.069
 
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>type results\LibriSpeech-samples\results.txt
-1089-134686-0009
-Reference: at most by an alms given to a beggar whose blessing he fled from he might hope wearily to win for himself some measure of actual grace
-Predicted: At most, by an arm's given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace.
-WER: 0.185, CER: 0.045, RTF: 0.063
-
-3570-5694-0000
-Reference: but already at a point in economic evolution far antedating the emergence of the lady specialised consumption of goods as an evidence of pecuniary strength had begun to work out in a more or less elaborate system
-Predicted: But already at a point in economic evolution far and dating, the emergence of the lady, specialized consumption of goods as an evidence of pecuniary strength had begun to work out in a more or less elaborate system.
-WER: 0.162, CER: 0.033, RTF: 0.058
-
-61-70968-0000
-Reference: he began a confused complaint against the wizard who had vanished behind the curtain on the left
-Predicted: He began a confused complaint against the wizard who had vanished behind the curtain on the left.
-WER: 0.118, CER: 0.021, RTF: 0.067
-
-Summary:
-Average WER: 0.155
-Average CER: 0.033
-Average RTF: 0.063
-
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
-(ovep_venv) C:\Github\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
+(python311_venv) C:\GitHub\whisper-ovep-python>
