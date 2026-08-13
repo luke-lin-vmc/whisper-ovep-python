@@ -1,5 +1,5 @@
 # About this project
-The project is to show how to run Whisper on Intel CPU/GPU/NPU thru [ONNX Runtime](https://github.com/microsoft/onnxruntime) + [OpenVINO Execution Provider](https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html)
+The project is to show how to run Whisper on Intel CPU/GPU/NPU thru [ONNX Runtime](https://github.com/microsoft/onnxruntime) + [OpenVINO Execution Provider plugin](https://pypi.org/project/onnxruntime-ep-openvino/)
 
 The source code is forked from [RyzenAI-SW Whisper Demo](https://github.com/amd/RyzenAI-SW/tree/419829fc8f8f58ad1a31c4fcc0287d2103f84824/demo/ASR/Whisper)
 
@@ -77,39 +77,56 @@ C:\Python\python313_venv\Lib\site-packages\torchcodec>dir /o
 ```
 ### Run the pipeline (input from a file)
 ```
-python run_whisper.py --model-dir exported_whisper_base --device gpu --input audio_files/61-52s.wav
+python run_whisper.py --model-dir exported_whisper_base --device GPU --input audio_files/61-52s.wav
 ```
-* The device can be
-  * ```ov_cpu```, ```gpu``` or ```npu``` --- using CPU, GPU or NPU thru OpenVINOExecutionProvider
-  * ```cpu``` --- using CPU thru default CPUExecutionProvider
+* The `--device` can be
+  * `CPU`, `GPU`, `NPU` or `AUTO` --- using CPU, GPU, NPU or AUTO plugin thru OpenVINOExecutionProvider
+  * if `--device` is not specified --- using CPU thru default CPUExecutionProvider
 
 ### Run the pipeline (input from microphone)
 ```
-python run_whisper.py --model-dir exported_whisper_base --device gpu --input mic
+python run_whisper.py --model-dir exported_whisper_base --device GPU --input mic
 ```
 ### Run the pipeline to evaluate a dataset
 ```
-python run_whisper.py --model-dir exported_whisper_base --device gpu --eval-dir eval_dataset\LibriSpeech-samples
+python run_whisper.py --model-dir exported_whisper_base --device GPU --eval-dir eval_dataset\LibriSpeech-samples
 ```
 * Results will be stored in ```results\LibriSpeech-samples\results.txt```
 ## Sample Log
 ```
-C:\Github\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device npu --input audio_files/61-52s.wav
-Selected provider: ['OpenVINOExecutionProvider']
-Provider option: [{'device_type': 'NPU', 'cache_dir': './cache'}]
+(python313_venv) C:\GitHub\whisper-ovep-python>python run_whisper.py --model-dir exported_whisper_base --device NPU --input audio_files/61-52s.wav
+
+OpenVINO Execution Provider plugin library path:
+C:\Python\python313_venv\Lib\site-packages\onnxruntime_ep_openvino\onnxruntime_providers_openvino_plugin.dll
+
+Available Execution Provider devices:
+CPUExecutionProvider
+OpenVINOExecutionProvider NPU
+OpenVINOExecutionProvider GPU
+OpenVINOExecutionProvider CPU
+OpenVINOExecutionProvider.AUTO NPU
+OpenVINOExecutionProvider.AUTO GPU
+OpenVINOExecutionProvider.AUTO CPU
+
+Selected Execution Provider device:
+OpenVINOExecutionProvider NPU
+
+Execution Provider option:
+{'load_config': '{"AUTO":{"DEVICE_PROPERTIES":{"NPU":{"CACHE_DIR":"cache"}}},"NPU":{"CACHE_DIR":"cache"}}'}
+
 
 Performance Metric (Chunk 1):
- Time to First Token for this chunk: 0.11 seconds
+ Time to First Token for this chunk: 0.10 seconds
 
 Performance Metric (Chunk 2):
- Time to First Token for this chunk: 2.17 seconds
- RTF: 0.08
+ Time to First Token for this chunk: 2.03 seconds
+ RTF: 0.07
 
 Transcription: Also, there was a stripling page who turned into a maze was so sweet a lady, sir, and in some manner I do think she died. But then the picture was gone as quickly as it came. Sister Nell, do you hear these marvels? Take your place and let us see what the crystal can show to you, like is not young master, though I am an old man. With all rant the opening of the tent to see what might be a miss, but Master Will, who peeped out first, needed no more than one glance. Mistress Fitzuth to the rear of the tent cries of unnotting him, unnotting him. Before them fled the stroller and his three sons, capless and tear what is that tumult and rioting, cried out the squire, thoratatively, and he blew twice on the silver whistle which hung at his belt.
 
-C:\Github\whisper-ovep-python>
+(python313_venv) C:\GitHub\whisper-ovep-python>
 ```
 [Full log](https://github.com/luke-lin-vmc/whisper-ovep-python/blob/main/log_full.txt) (from scratch) is provided for reference
 
 # Reference
-https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html
+https://pypi.org/project/onnxruntime-ep-openvino/
