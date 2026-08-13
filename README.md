@@ -24,51 +24,56 @@ python dynamic_to_static.py --input_model_dir exported_whisper_base
 ### Install FFmpeg
 ```FFmpeg``` is required as ```torchcodec``` leverages ```FFmpeg``` as its underlying encoding/decoding engine.
 
-1. Download [```ffmpeg-7.1.1-full_build-shared.zip```](https://github.com/GyanD/codexffmpeg/releases/download/7.1.1/ffmpeg-7.1.1-full_build-shared.zip) from [```ffmpeg releases repo```](https://github.com/GyanD/codexffmpeg/releases). Don’t use release 8.x as ```torchcodec``` supports ```FFmpeg``` 4.x~7.x.
+1. `torchCodec` supports all major `FFmpeg` versions from 4.x~8.x. Here we download [```ffmpeg-8.1.2-full_build-shared.zip```](https://github.com/GyanD/codexffmpeg/releases/download/8.1.2/ffmpeg-8.1.2-full_build-shared.zip) from [```ffmpeg releases repo```](https://github.com/GyanD/codexffmpeg/releases)
 2. Input ```pip show pip``` to find your Python site-packages location.
 3. Decompress the downloaded ```FFmpeg``` package in step 1., copy ```bin\*.dll``` to Python ```site-packages\torchcodec```. The files under ```site-packages\torchcodec``` should look like
 
 ```
-C:\Python\openvino_env\Lib\site-packages\torchcodec>dir /o
- Volume in drive C is OSDisk
- Volume Serial Number is C2C8-D7B9
+C:\Python\python313_venv\Lib\site-packages\torchcodec>dir /o
+ Volume in drive C has no label.
+ Volume Serial Number is 6E19-CE53
 
- Directory of C:\Python\openvino_env\Lib\site-packages\torchcodec
+ Directory of C:\Python\python313_venv\Lib\site-packages\torchcodec
 
-09/11/2025  09:18 AM    <DIR>          .
-09/10/2025  05:26 PM    <DIR>          ..
-09/09/2025  05:32 PM    <DIR>          __pycache__
-09/09/2025  05:32 PM    <DIR>          _core
-09/09/2025  05:32 PM    <DIR>          _samplers
-09/09/2025  05:32 PM    <DIR>          decoders
-09/09/2025  05:32 PM    <DIR>          encoders
-09/09/2025  05:32 PM    <DIR>          samplers
-09/09/2025  05:32 PM               595 __init__.py
-09/09/2025  05:32 PM             5,350 _frame.py
-09/09/2025  05:32 PM             2,422 _internally_replaced_utils.py
-03/12/2025  02:06 PM        89,117,184 avcodec-61.dll
-03/12/2025  02:06 PM         4,514,816 avdevice-61.dll
-03/12/2025  02:06 PM        41,882,624 avfilter-10.dll
-03/12/2025  02:06 PM        18,723,328 avformat-61.dll
-03/12/2025  02:06 PM         2,840,576 avutil-59.dll
-09/09/2025  05:32 PM           310,784 libtorchcodec_core4.dll
-09/09/2025  05:32 PM           310,784 libtorchcodec_core5.dll
-09/09/2025  05:32 PM           310,784 libtorchcodec_core6.dll
-09/09/2025  05:32 PM           310,784 libtorchcodec_core7.dll
-09/09/2025  05:32 PM           564,736 libtorchcodec_custom_ops4.dll
-09/09/2025  05:32 PM           564,736 libtorchcodec_custom_ops5.dll
-09/09/2025  05:32 PM           564,736 libtorchcodec_custom_ops6.dll
-09/09/2025  05:32 PM           564,736 libtorchcodec_custom_ops7.dll
-09/09/2025  05:32 PM           204,288 libtorchcodec_pybind_ops4.pyd
-09/09/2025  05:32 PM           204,288 libtorchcodec_pybind_ops5.pyd
-09/09/2025  05:32 PM           204,288 libtorchcodec_pybind_ops6.pyd
-09/09/2025  05:32 PM           204,288 libtorchcodec_pybind_ops7.pyd
-03/12/2025  02:06 PM            87,552 postproc-58.dll
-03/12/2025  02:06 PM           438,784 swresample-5.dll
-03/12/2025  02:06 PM           707,584 swscale-8.dll
-09/09/2025  05:32 PM                75 version.py
-              24 File(s)    162,640,122 bytes
-               8 Dir(s)  115,870,347,264 bytes free
+08/11/2026  11:22 AM    <DIR>          .
+08/11/2026  11:11 AM    <DIR>          ..
+08/11/2026  11:09 AM    <DIR>          __pycache__
+08/11/2026  11:09 AM    <DIR>          _core
+08/11/2026  11:09 AM    <DIR>          decoders
+08/11/2026  11:09 AM    <DIR>          encoders
+08/11/2026  11:09 AM    <DIR>          samplers
+08/11/2026  11:09 AM    <DIR>          share
+08/11/2026  11:09 AM    <DIR>          transforms
+08/11/2026  11:09 AM             2,222 __init__.py
+08/11/2026  11:09 AM             5,373 _frame.py
+08/11/2026  11:09 AM             5,626 _internally_replaced_utils.py
+08/11/2026  11:09 AM             1,722 _logging.py
+06/27/2026  08:30 PM        97,454,080 avcodec-62.dll
+06/27/2026  08:30 PM         6,323,200 avdevice-62.dll
+06/27/2026  08:30 PM       124,344,320 avfilter-11.dll
+06/27/2026  08:30 PM        20,179,968 avformat-62.dll
+06/27/2026  08:30 PM         3,148,288 avutil-60.dll
+08/11/2026  11:09 AM           920,576 libtorchcodec_core4.dll
+08/11/2026  11:09 AM           921,088 libtorchcodec_core5.dll
+08/11/2026  11:09 AM           921,088 libtorchcodec_core6.dll
+08/11/2026  11:09 AM           921,088 libtorchcodec_core7.dll
+08/11/2026  11:09 AM           922,624 libtorchcodec_core8.dll
+08/11/2026  11:09 AM         1,607,168 libtorchcodec_custom_ops4.dll
+08/11/2026  11:09 AM         1,607,168 libtorchcodec_custom_ops5.dll
+08/11/2026  11:09 AM         1,607,168 libtorchcodec_custom_ops6.dll
+08/11/2026  11:09 AM         1,607,168 libtorchcodec_custom_ops7.dll
+08/11/2026  11:09 AM         1,607,168 libtorchcodec_custom_ops8.dll
+08/11/2026  11:09 AM           152,064 libtorchcodec_pybind_ops4.pyd
+08/11/2026  11:09 AM           152,064 libtorchcodec_pybind_ops5.pyd
+08/11/2026  11:09 AM           152,064 libtorchcodec_pybind_ops6.pyd
+08/11/2026  11:09 AM           152,064 libtorchcodec_pybind_ops7.pyd
+08/11/2026  11:09 AM           152,064 libtorchcodec_pybind_ops8.pyd
+08/11/2026  11:09 AM                 0 py.typed
+06/27/2026  08:30 PM           486,912 swresample-6.dll
+06/27/2026  08:30 PM        12,748,288 swscale-9.dll
+08/11/2026  11:09 AM                80 version.py
+              28 File(s)    278,102,703 bytes
+               9 Dir(s)  454,825,242,624 bytes free
 ```
 ### Run the pipeline (input from a file)
 ```
@@ -106,22 +111,5 @@ C:\Github\whisper-ovep-python>
 ```
 [Full log](https://github.com/luke-lin-vmc/whisper-ovep-python/blob/main/log_full.txt) (from scratch) is provided for reference
 
-## Known issues
-If the following warning appears when running the pipeline thru OVEP for the 1st time
-```
-C:\Users\...\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py:123:
-User Warning: Specified provider 'OpenVINOExecutionProvider' is not in available provider names.
-Available providers: 'AzureExecutionProvider, CPUExecutionProvider'
-```
-This would be caused by that both ```onnxruntime``` and ```onnxruntime-openvino``` are installed. Solution is to remove both of them then re-install ```onnxruntime-openvino```
-```
-pip uninstall -y onnxruntime onnxruntime-openvino
-pip install onnxruntime-openvino~=1.24.1
-```
-Or simply to re-install ```onnxruntime-openvino``` if you would like to keep ```onnxruntime```
-```
-pip uninstall -y onnxruntime-openvino
-pip install onnxruntime-openvino~=1.24.1
-```
 # Reference
 https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html

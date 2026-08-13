@@ -2,6 +2,7 @@ import argparse
 import json
 import numpy as np
 import onnxruntime as ort
+import onnxruntime_ep_openvino as openvino_ep
 import torchaudio
 import sounddevice as sd
 import queue
@@ -11,20 +12,78 @@ from transformers import WhisperFeatureExtractor, WhisperTokenizer
 from pathlib import Path
 from jiwer import wer, cer
 
-# Add openvino libs to path as onnxruntime_providers_openvino.dll depends on openvino.dll. See https://github.com/intel/onnxruntime/releases/
-import onnxruntime.tools.add_openvino_win_libs as utils
-utils.add_openvino_libs_to_path()
-
 SAMPLE_RATE = 16000
 CHUNK_SIZE = 1600  # 0.1 sec chunks
 
 
 class WhisperONNX:
     def __init__(self, encoder_path, decoder_path,
-                 tokenizer_dir=None, providers=None, provider_options=None):
+                 tokenizer_dir=None, device=None):
 
-        self.encoder = ort.InferenceSession(encoder_path, providers=providers, provider_options=provider_options)
-        self.decoder = ort.InferenceSession(decoder_path, providers=providers, provider_options=provider_options)
+        all_ep_devices = ort.get_ep_devices()
+
+        selected_ep_device = None
+        if device in ["CPU", "GPU", "NPU"]:
+            # Use OpenVINOExecutionProvider with specified device
+            for d in all_ep_devices:
+                if d.ep_name == "OpenVINOExecutionProvider":
+                    if d.ep_metadata.get("ov_device") == device:
+                        selected_ep_device = d
+                        break
+
+        elif device == "AUTO":
+            # Use OpenVINOExecutionProvider.AUTO
+            for d in all_ep_devices:
+                if d.ep_name == "OpenVINOExecutionProvider.AUTO":
+                    selected_ep_device = d
+                    break
+
+        else:
+            # device is None or unrecognized: use default CPUExecutionProvider
+            for d in all_ep_devices:
+                if d.ep_name == "CPUExecutionProvider":
+                    selected_ep_device = d
+                    break
+
+        if selected_ep_device is None:
+            raise RuntimeError(f"Error: No execution provider found")
+        else:
+            print(f"Selected Execution Provider device:")
+            print(f"{selected_ep_device.ep_name} {selected_ep_device.ep_metadata.get("ov_device")}\n")
+
+        # Create session options
+        sess_options = ort.SessionOptions()
+
+        # Enable model cache if device is NPU
+        ep_options = {}
+        if selected_ep_device.ep_metadata.get("ov_device") == "NPU":
+            # Reference: Multi-Level Nested Configuration https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html#load_config
+            #
+            # Must consider both "OpenVINOExecutionProvider NPU" and "OpenVINOExecutionProvider.AUTO NPU" cases
+            #
+            #    {'load_config':'{
+            #        "AUTO":{
+            #            "DEVICE_PROPERTIES":{
+            #                "NPU":{
+            #                    "CACHE_DIR":"cache"}
+            #                }
+            #            },
+            #        "NPU":{
+            #            "CACHE_DIR":"cache"}
+            #            }'
+            #    }
+            ep_options["load_config"] = "{\"AUTO\":{\"DEVICE_PROPERTIES\":{\"NPU\":{\"CACHE_DIR\":\"cache\"}}},\"NPU\":{\"CACHE_DIR\":\"cache\"}}"
+
+        if ep_options:
+            print(f"Execution Provider option:")
+            print(f"{ep_options}\n")
+
+        # Add OpenVINO EP to the session
+        sess_options.add_provider_for_devices([selected_ep_device], ep_options)
+
+        # Create inference session
+        self.encoder = ort.InferenceSession(encoder_path, sess_options=sess_options)
+        self.decoder = ort.InferenceSession(decoder_path, sess_options=sess_options)
 
         if tokenizer_dir is None:
             tokenizer_dir = Path(encoder_path).parent
@@ -36,6 +95,7 @@ class WhisperONNX:
         self.max_length = min(448, self.decoder.get_inputs()[0].shape[1])
         if not isinstance(self.max_length, int):
             raise ValueError("Invalid/Dynamic input shapes")
+
     def preprocess(self, audio):
         """
         Convert raw audio to Whisper log-mel spectrogram
@@ -54,7 +114,7 @@ class WhisperONNX:
         Greedy decode with fixed-length input_ids
         """
         tokens = [self.decoder_start_token]
-        first_token_time = None  
+        first_token_time = None
         for _ in range(self.max_length):
             # Pad input_ids to (1, max_length)
             decoder_input = np.full((1, self.max_length), self.eos_token, dtype=np.int64)
@@ -65,7 +125,7 @@ class WhisperONNX:
                 "encoder_hidden_states": encoder_out
             })
             logits = outputs[0]
-            next_token = int(np.argmax(logits[0, len(tokens)-1])) 
+            next_token = int(np.argmax(logits[0, len(tokens)-1]))
 
             if first_token_time is None:
                 first_token_time = time.time()
@@ -79,7 +139,7 @@ class WhisperONNX:
         """
         Full encode-decode pipeline with support for long-form transcription using chunking.
         """
-        chunk_size = SAMPLE_RATE * chunk_length_s 
+        chunk_size = SAMPLE_RATE * chunk_length_s
         total_samples = len(audio)
         transcription = []
         chunk_idx = 0
@@ -163,25 +223,31 @@ def evaluate(model, dataset_dir, results_dir):
         else:
             print("No valid audio-transcript pairs found.")
 
-def load_provider_info(device):
-    if device == "cpu":
-        providers = ["CPUExecutionProvider"]
-        provider_options = None
-    elif device == "gpu":
-        providers = ["OpenVINOExecutionProvider"]
-        provider_options = [{"device_type": "GPU"}]
-    elif device == "npu":
-        providers = ["OpenVINOExecutionProvider"]
-        provider_options = [{"device_type": "NPU", "cache_dir": "./cache"}]
-    elif device == "ov_cpu":
-        providers = ["OpenVINOExecutionProvider"]
-        provider_options = [{"device_type": "CPU"}]
-    else:
-        raise ValueError(f"Unsupported device: {device}")
 
-    print("Selected provider:", providers)
-    print("Provider option:", provider_options)
-    return providers, provider_options
+def reg_ovep():
+    # Get the plugin library path
+    ovep_lib_path = openvino_ep.get_library_path()
+    print(f"\nOpenVINO Execution Provider plugin library path:")
+    print(f"{ovep_lib_path}\n")
+
+    # Register the plugin with ONNX Runtime
+    registration_name = "openvino_ep"
+    ort.register_execution_provider_library(registration_name, ovep_lib_path)
+
+    # Check OpenVINO EP name, should be "OpenVINOExecutionProvider"
+    ovep_name = openvino_ep.get_ep_name()
+    if ovep_name != "OpenVINOExecutionProvider":
+        raise RuntimeError(f"Unknown OpenVINO Execution Provider name: {ovep_name}")
+
+    # List all ep devices
+    all_ep_devices = ort.get_ep_devices()
+    print("Available Execution Provider devices:")
+    for d in all_ep_devices:
+        if ovep_name in d.ep_name:   # could be "OpenVINOExecutionProvider" or "OpenVINOExecutionProvider.AUTO"
+            print(f"{d.ep_name} {d.ep_metadata.get("ov_device")}")
+        else:
+            print(f"{d.ep_name}")
+    print()
 
 
 def mic_stream(model, duration=0, silence_threshold=0.01, silence_duration=5.0):
@@ -249,25 +315,24 @@ def main():
     parser.add_argument("--model-dir", required=True, help="Path to Whisper ONNX model")
     parser.add_argument("--eval-dir", help="Dataset directory with wavs/ and transcripts.txt")
     parser.add_argument("--results-dir", default="results", help="Directory to store evaluation results")
-    parser.add_argument("--device", choices=['cpu', 'gpu', 'npu', 'ov_cpu'], default='cpu')
+    parser.add_argument("--device", choices=['CPU', 'GPU', 'NPU', 'AUTO'], default=None)
     parser.add_argument("--duration", type=int, default=0, help="Mic duration in seconds (0 = unlimited)")
     args = parser.parse_args()
 
-    providers, provider_options = load_provider_info(args.device)
+    reg_ovep()
 
     encoder_path = Path(args.model_dir) / "encoder_model_static.onnx"
     decoder_path = Path(args.model_dir) / "decoder_model_static.onnx"
 
-    model = WhisperONNX(encoder_path, 
+    model = WhisperONNX(encoder_path,
                         decoder_path,
                         tokenizer_dir=args.model_dir,
-                        providers=providers,
-                        provider_options=provider_options)
-    
+                        device=args.device)
+
     if args.eval_dir:
         evaluate(model, args.eval_dir, args.results_dir)
         return
-    
+
     if not args.input and not args.eval_dir:
         print("Error: You must provide --input (wav or mic) or --eval-dir.")
         return
@@ -275,7 +340,7 @@ def main():
     if args.input and args.input.lower() not in ['mic'] and not Path(args.input).suffix == '.wav':
         print("Error: --input must be 'mic' or path to a .wav file.")
         return
-    
+
     if args.input.lower() == 'mic':
         try:
             mic_stream(model, args.duration)
